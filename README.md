@@ -75,6 +75,42 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
   > 注：以"AI"为暗号为默认配置，你可以在setting.py中设置为任何字符串。甚至为空（如果暗号，为空私聊、群聊的任何问题@都会获得回复，不包括自己发送的）。
 ### 第五步：配置开机启动、后台运行。（可选）
 - 以使用systemctl系统管理程序的Linux系统ubuntu为例：
+  - 创建系统管理服务配置
+  ```shell
+  sudo nano /lib/systemd/system/chat-E-AI.service
+  ```
+  - 配置示例
+  ```config
+  [Unit]
+  Description=Daemon for chat-E-AI Demo Application
+  After=network.target
+
+  [Service]
+  User=ubuntu
+  Group=ubuntu
+  
+  WorkingDirectory=/home/ubuntu/chat-E-AI/
+  ExecStart=/home/ubuntu/chat-E-AI/venv-chat-E-AI/bin/python main.py
+
+  [Install]
+  WantedBy=multi-user.target
+  ```
+  - 生效配置
+  ```shell
+  sudo systemctl daemon-reload
+  ```
+  - 运行chat-E-AI服务
+  ```shell
+  sudo systemctl start chat-E-AI.service
+  ```
+  - 查看日志（以登录）
+  ```shell
+  journalctl -u chat-E-AI.service -n 50
+  ```
+  - 检查chat-E-AI服务运行状态
+  ```shell
+  sudo systemctl status chat-E-AI.service
+  ```
 
 
 <a href="#readme">
