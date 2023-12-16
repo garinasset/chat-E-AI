@@ -93,14 +93,17 @@ class AIOpenAI(AI):
                                               "content": toolResponse.answer})
                         _response.source = _response.source + "\n#" + toolResponse.source
                     return inner_function()
-            except openai.APIConnectionError:
+            except openai.APIConnectionError as e:
                 """记录日志"""
-                loggerOpenAI.error(f'openai.APIConnectionError')
-                _response.answer = "亲爱的！我尝试访问OpenAI的网络服务，但是网络不可达。你懂得，这可能是常有的事，对吧。"
+                loggerOpenAI.error(e.message)
+
+                _response.answer = e.message
                 return _response
             except openai.APIStatusError as e:
-                _response.answer = e.message
+                """记录日志"""
                 loggerOpenAI.error(e.message)
+
+                _response.answer = e.message
                 return _response
 
         _response = inner_function()
