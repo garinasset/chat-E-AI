@@ -27,7 +27,7 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
 |                                    |                                    |
 | ---------------------------------- | ---------------------------------- |
 | ![Demo](./.github/imgs/intro1.png) | ![Demo](./.github/imgs/intro2.png) |
-| ![Demo](./.github/imgs/intro3.png) | ![Demo](./.github/imgs/intro4.png) |
+
 
 </div>
 
