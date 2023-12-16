@@ -58,14 +58,14 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
   ```shell
   pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
-### 第三步：编辑配置文件，以嵌入OpenAI为例：
+### 第三步：编辑配置文件，以嵌入"OpenAI"为例：
 - **编辑config/setting.py，设置OpenAI API Key（最小配置）**
   ```python
   OPENAI_API_KEY = "你的Key"
   ```
 - **其他根据需要配置，参阅setting.py的注释说明（可选）**
 
-### 第四步：运行项目，开始和AI进行第一次对话，以接入个人微信为例：
+### 第四步：运行项目，开始和AI进行第一次对话，以接入"个人微信"为例：
 - **运行程序**
   ```
   python main.py
