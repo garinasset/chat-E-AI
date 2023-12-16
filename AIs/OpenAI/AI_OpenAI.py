@@ -97,7 +97,7 @@ class AIOpenAI(AI):
                 """记录日志"""
                 loggerOpenAI.error(e.message)
 
-                _response.answer = e.body
+                _response.answer = e.message
                 return _response
             except openai.APIStatusError as e:
                 """记录日志"""
