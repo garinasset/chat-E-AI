@@ -17,15 +17,15 @@ from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
 # [OpenAI KEY]
 OPENAI_API_KEY = ''
 
-# [模型]
-"""翻阅字典chat-E-AI/AIs/OpenAI/Model_Dicts.py"""
+# [OpenAI模型]
+"""编辑/chat-E-AI/AIs/OpenAI/Model_Dicts.py"""
 """可按Model_Dicts.py的文档贡献补充其他模型"""
 OPENAI_MODEL_DICTS = MODEL_DICTS_OPENAI["gpt-3.5-turbo-1106"]
 
-# [系统提示]
+# [OpenAI系统提示]
 OPENAI_SYSTEM_CONTENT = '你是ChatGPT, 一个由OpenAI训练的大型语言模型, 你旨在回答并解决人们的任何问题，并且可以使用多种语言与人交流。'
 
-# [联网工具]
+# [OpenAI联网工具]
 """True or False"""
 """默认True"""
 OPENAI_TOOLS_CONFIG = [
@@ -41,13 +41,18 @@ OPENAI_TOOLS_CONFIG = [
 ###################################
 CHAT_ItChat = 'ItChat'
 
-# [记住登录]
+# [ItChat记住登录]
 """默认True"""
 ITCHAT_HOT_RELOAD = True
 
-# [启用终端二维码]
+# [Itchat启用终端二维码]
 """默认2"""
 ITCHAT_ENABLECMDQR = 2
+
+# [ItChat-Debug模式]
+"""True or False"""
+"""默认False"""
+SYSTEM_ITCHAT_DEBUG = False
 
 # 系统配置 ###########################
 """Config Which You Want to want."""
@@ -61,11 +66,6 @@ SYSTEM_OPENAI = True
 """True or False"""
 """默认True"""
 SYSTEM_ITCHAT = True
-
-# [启用ItChat-Debug模式]
-"""True or False"""
-"""默认False"""
-SYSTEM_ITCHAT_DEBUG = False
 
 # [ItChat呼叫暗号]
 """"AI"表示回复AI开头的消息；""表示回复所有消息。"""

@@ -36,31 +36,33 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
   ```shell
   git clone https://github.com/garinops/chat-E-AI.git
   ```
+  ```shell
+  cd chat-E-AI
+  ```
 ### 第二步：安装Python
-- **Python3.10或更高版本。**
+- **Python3.10或更高。**
 - **配置Python venv虚拟环境（可选，强烈建议！）[阅读venv虚拟环境](https://docs.python.org/zh-cn/3/library/venv.html)。**
   - 创建venv虚拟环境，以Python3.10为例。
     ```
     python3.10 -m venv venv-chat-E-AI
     ```
-  - 激活venv虚拟环境(Windows)。
+  - 激活venv虚拟环境（Windows）。
     ```
     venv-chat-E-AI\Scripts\activate
     ```
-  - 激活venv虚拟环境(Linux\Unix\MacOS)。
+  - 激活venv虚拟环境（Linux\Unix\MacOS）。
     ```
     source venv-chat-E-AI/bin/activate
     ```
 - **安装chat-E-AI项目依赖**
   ```shell
-  cd chat-E-AI
   pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
 ### 第三步：编辑配置文件，以嵌入OpenAI为例：
 - **编辑config/setting.py，设置OpenAI API Key（最小配置）**
-```python
-OPENAI_API_KEY = "你的Key"
-```
+  ```python
+  OPENAI_API_KEY = "你的Key"
+  ```
 - **其他根据需要配置，参阅setting.py的注释说明（可选）**
 
 ### 第四步：运行项目，开始和AI进行第一次对话，以接入个人微信为例：
@@ -111,10 +113,15 @@ OPENAI_API_KEY = "你的Key"
 - **嵌入其他AI**
 - **嵌入其他即时通讯**
 - **OpenAI tools开发**
+  > 通过OpenAI的工具函数功能（tools），开发者能进一步拓展GPT的能力，比如联网获取实时信息，与第三方应用互动等。
   - 参照"./AIs/OpenAI/tools/TIME.py"这个时间工具，你可以轻松开发其他插件。
   - tools工具已经在项目实现集成，你不必处理其他细节，只需要专注定义自己的插件工具，以及你的API调用即可。
   - 注意开发规范。
-  > 通过OpenAI的工具函数功能（tools），开发者能进一步拓展GPT的能力，比如联网获取实时信息，与第三方应用互动等。
+- **OpenAI 模型添加**
+  > 项目已OpenAI几个常用封装模型为字典，可贡献补充其他模型。
+  - 编辑/chat-E-AI/AIs/OpenAI/Model_Dicts.py
+  - 按Model_Dicts.py的文档规范贡献补充其他模型。
+  
 
 <a href="#readme">
     <img src="https://img.shields.io/badge/-返回顶部-7d09f1.svg" alt="#" align="right">
@@ -178,6 +185,7 @@ OPENAI_API_KEY = "你的Key"
     </tr>
   </table>
 </a>
+
 <a href="#readme">
     <img src="https://img.shields.io/badge/-返回顶部-7d09f1.svg" alt="#" align="right">
 </a>
