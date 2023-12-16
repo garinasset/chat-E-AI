@@ -11,11 +11,11 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
 </div>
 
 <p align="center">
-  <a href="/%23%23%20%F0%9F%91%A8%E2%80%8D%F0%9F%92%BB%20%E9%9D%A2%E5%90%91%E5%BC%80%E5%8F%91%E8%80%85">
+  <a href="#-面向开发者">
     <img height="21" src="https://img.shields.io/badge/面向开发者-%23d4eaf7?style=flat-square&logo=xcode&logoColor=7d09f1" alt="development">
   </a>
-  <a href="/%23%23%20%F0%9F%92%AA%20%E7%9B%B8%E5%85%B3%E9%A1%B9%E7%9B%AE">
-    <img height="21" src="https://img.shields.io/badge/相关项目-7d09f1?style=flat-square" alt="project">
+  <a href="#-类似项目">
+    <img height="21" src="https://img.shields.io/badge/类似项目-7d09f1?style=flat-square" alt="project">
   </a>
   <a href="https://github.com/garinops/chat-E-AI/blob/main/LICENSE">
     <img height="21" src="https://img.shields.io/badge/license-MIT-ffffff?style=flat-square&labelColor=d4eaf7&color=7d09f1" alt="license">
@@ -130,7 +130,7 @@ OPENAI_API_KEY = "你的Key"
     <img src="https://img.shields.io/badge/-返回顶部-7d09f1.svg" alt="#" align="right">
 </a>
 
-## 💪 相关项目
+## 💪 类似项目
 
 - [chatgpt-on-wechat](https://github.com/zhayujie/chatgpt-on-wechat)
 
