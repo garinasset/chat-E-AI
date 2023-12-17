@@ -142,7 +142,7 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
    - [ ] 图片生成
    - [ ] 语音翻译
    - [ ] 语音生成
-   - [x] features - Keys池，随机策略负载均衡
+   - [x] features - Keys池，随机策略，简单负载均衡
    - [x] features - Rate limits，自动回退
 
 <a href="#readme">
