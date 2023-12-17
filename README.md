@@ -204,15 +204,16 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
   </tr>
 
   <tr>
-  <td rowspan="2">
-      <picture>
-        <source media="(prefers-color-scheme: dark)"
-        srcset="https://next.ossinsight.io/widgets/official/analyze-repo-pushes-and-commits-per-month/thumbnail.png?repo_id=732435359&image_size=4x7&color_scheme=dark">
-        <img alt="Pushes and Commits of garinops/chat-E-AI"
-        src="https://next.ossinsight.io/widgets/official/analyze-repo-pushes-and-commits-per-month/thumbnail.png?repo_id=732435359&image_size=4x7&color_scheme=light">
-      </picture>
-  </td>
+    <td rowspan="2">
+        <picture>
+          <source media="(prefers-color-scheme: dark)"
+          srcset="https://next.ossinsight.io/widgets/official/analyze-repo-pushes-and-commits-per-month/thumbnail.png?repo_id=732435359&image_size=auto&color_scheme=dark">
+          <img alt="Pushes and Commits of garinops/chat-E-AI"
+          src="https://next.ossinsight.io/widgets/official/analyze-repo-pushes-and-commits-per-month/thumbnail.png?repo_id=732435359&image_size=auto&color_scheme=light">
+        </picture>
+    </td>
   </tr>
+
 </table>
 </a>
 
