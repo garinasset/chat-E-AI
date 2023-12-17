@@ -11,7 +11,7 @@ from utils.utils_string import UtilsString
 loggerItchatEAI = logging.getLogger("itchatEOpenAI")
 
 
-class ItchatEOpenAI:
+class ItchatEAI:
     def __init__(self):
         itchat.auto_login(hotReload=ITCHAT_HOT_RELOAD, enableCmdQR=ITCHAT_ENABLECMDQR)
         # 获取登录用户
@@ -62,7 +62,7 @@ class ItchatEOpenAI:
         chat_instance.ai.messageContentUserAssistant = chat_instance.messagesQueue.queue
         """会话实例中的OpenAI实例 messages更新。"""
 
-        replay = ItchatEOpenAI.util_gen_replay_suffix(_response_answer, _response)
+        replay = ItchatEAI.util_gen_replay_suffix(_response_answer, _response)
         return replay
 
     def start(self):

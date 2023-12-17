@@ -1,4 +1,4 @@
-from E.itchat_E_OpenAI.itchat_E_OpenAI import ItchatEOpenAI
+from E.itchat_E_OpenAI.itchat_E_AI import ItchatEAI
 from config.setting import SYSTEM_ITCHAT
 from system_components.log import Log
 
@@ -21,7 +21,7 @@ def main():
         # 运行itchat-E-OpenAI
         if SYSTEM_ITCHAT:
             logInstanceItchatEAI.logger.info("Embedding Chat ITCHAT⠋⠋⠋")
-            chatEAI = ItchatEOpenAI()
+            chatEAI = ItchatEAI()
             chatEAI.start()
 
     except Exception as e:
