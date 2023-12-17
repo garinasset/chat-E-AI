@@ -18,7 +18,7 @@ from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
 OPENAI_API_KEYS = [""]
 
 # [OpenAI Rate Limits]
-"""指定Rate Limits限制（次数/分钟），触发限制会自动依据限制设定等待重试。设定为0表示不限制。"""
+"""指定Rate Limits限制（次数/分钟）。当OpenAI返回限制响应时，程序会自动等待。设定为0表示不限制。"""
 """默认3"""
 OPENAI_API_RATE_LIMITS = 3
 
