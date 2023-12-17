@@ -196,35 +196,24 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
 我们非常欢迎各种形式的贡献。如果你对贡献代码感兴趣，可以大展身手，向项目贡献你的伟大能力。
 
 <a href="https://github.com/garinops/chat-E-AI/graphs/contributors" target="_blank">
-  <table>
-    <tr>
-      <th colspan="2">
-        <br><img src="https://contrib.rocks/image?repo=garinops/chat-E-AI"><br><br>
-      </th>
-    </tr>
-    <tr>
-      <td>
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=active&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=2x3&color_scheme=dark">
-          <img alt="Active participants of garinops - past 28 days" src="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=active&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=2x3&color_scheme=light">
-        </picture>
-      </td>
-      <td rowspan="2">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-org-participants-growth/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=4x7&color_scheme=dark">
-          <img alt="New trends of garinops" src="https://next.ossinsight.io/widgets/official/compose-org-participants-growth/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=4x7&color_scheme=light">
-        </picture>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=2x3&color_scheme=dark">
-          <img alt="New participants of garinops - past 28 days" src="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=2x3&color_scheme=light">
-        </picture>
-      </td>
-    </tr>
-  </table>
+<table>
+  <tr>
+    <th colspan="2">
+      <br><img src="https://contrib.rocks/image?repo=garinops/chat-E-AI"><br><br>
+    </th>
+  </tr>
+
+  <tr>
+  <td rowspan="2">
+      <picture>
+        <source media="(prefers-color-scheme: dark)"
+        srcset="https://next.ossinsight.io/widgets/official/analyze-repo-pushes-and-commits-per-month/thumbnail.png?repo_id=732435359&image_size=4x7&color_scheme=dark">
+        <img alt="Pushes and Commits of garinops/chat-E-AI"
+        src="https://next.ossinsight.io/widgets/official/analyze-repo-pushes-and-commits-per-month/thumbnail.png?repo_id=732435359&image_size=4x7&color_scheme=light">
+      </picture>
+  </td>
+  </tr>
+</table>
 </a>
 
 <a href="#readme">
@@ -233,16 +222,16 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
 
 ## 🌟 Star History
 
-<a href="https://github.com/garinops/chat-E-AI/stargazers" target="_blank" style="display: block" align="center">
+<!-- Copy-paste in your Readme.md file -->
+
+<a href="https://next.ossinsight.io/widgets/official/analyze-repo-stars-history?repo_id=732435359" target="_blank" style="display: block" align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/analyze-repo-stars-history/thumbnail.png?repo_id=732435359&image_size=auto&color_scheme=dark">
     <img alt="Star History of garinops/chat-E-AI" src="https://next.ossinsight.io/widgets/official/analyze-repo-stars-history/thumbnail.png?repo_id=732435359&image_size=auto&color_scheme=light">
   </picture>
 </a>
 
-<a href="#readme">
-    <img src="https://img.shields.io/badge/-返回顶部-7d09f1.svg" alt="#" align="right">
-</a>
+<!-- Made with [OSS Insight](https://ossinsight.io/) -->
 
 ## 使用协议
 
