@@ -144,7 +144,8 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
    - [ ] 图片生成
    - [ ] 语音翻译
    - [ ] 语音生成
-   - [x] tools-时间 - 基于本地
+   - [x] features - 随机Keys池
+   - [x] features - Rate limits回退
 
 <a href="#readme">
     <img src="https://img.shields.io/badge/-返回顶部-7d09f1.svg" alt="#" align="right">
