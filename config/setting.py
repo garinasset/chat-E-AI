@@ -4,7 +4,7 @@
 ##################################################################
 
 
-from AIs.OpenAI.Model_Dicts import MODEL_DICTS_OPENAI
+from AIs.OpenAI.AI_OpenAI_Model_Dicts import MODEL_DICTS_OPENAI
 from AIs.OpenAI.tools.TIME import ToolTime
 from AIs.OpenAI.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
 from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
@@ -18,8 +18,8 @@ from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
 OPENAI_API_KEY = ''
 
 # [OpenAI模型]
-"""编辑/chat-E-AI/AIs/OpenAI/Model_Dicts.py"""
-"""可按Model_Dicts.py的文档贡献补充其他模型"""
+"""编辑/chat-E-AI/AIs/OpenAI/AI_OpenAI_Model_Dicts.py"""
+"""按文档说明，贡献补充其他模型"""
 OPENAI_MODEL_DICTS = MODEL_DICTS_OPENAI["gpt-3.5-turbo-1106"]
 
 # [OpenAI系统提示]

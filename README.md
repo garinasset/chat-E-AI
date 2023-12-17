@@ -161,8 +161,8 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
   - 注意开发规范。
 - **OpenAI 模型添加**
   > 项目已OpenAI几个常用封装模型为字典，可贡献补充其他模型。
-  - 编辑/chat-E-AI/AIs/OpenAI/Model_Dicts.py
-  - 按Model_Dicts.py的文档规范贡献补充其他模型。
+  - 编辑/chat-E-AI/AIs/OpenAI/AI_OpenAI_Model_Dicts.py
+  - 按文档规范，贡献补充其他模型。
   
 
 <a href="#readme">
