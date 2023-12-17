@@ -53,15 +53,16 @@ class ItchatEOpenAI:
         chat_instance.ai.messageContentUserAssistant = chat_instance.messagesQueue.queue
         """AI实例messages更新。"""
 
-        response = chat_instance.ai.response()
-        response_answer = response.answer
+        chat_instance.ai.response()
+        _response = chat_instance.ai.responseReply
+        _response_answer = _response.answer
 
-        chat_instance.messagesQueue.enqueue_assistant(message_content=response_answer)
+        chat_instance.messagesQueue.enqueue_assistant(message_content=_response_answer)
         """assistant messages入列。"""
         chat_instance.ai.messageContentUserAssistant = chat_instance.messagesQueue.queue
         """会话实例中的OpenAI实例 messages更新。"""
 
-        replay = ItchatEOpenAI.util_gen_replay_suffix(response_answer, response)
+        replay = ItchatEOpenAI.util_gen_replay_suffix(_response_answer, _response)
         return replay
 
     def start(self):

@@ -52,3 +52,5 @@ tzdata~=2023.3
 urllib3~=2.1.0
 virtualenv~=20.25.0
 yarl~=1.9.4
+
+backoff~=2.2.1

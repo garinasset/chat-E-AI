@@ -9,6 +9,7 @@ def main():
 
     logInstanceItchatEAI = Log("itchatEOpenAI")
     logInstanceOpenAI = Log("OpenAI")
+    logInstanceBackoff = Log("backoff")
     logInstanceTool_WTTR_IN = Log("toolTime")
     logInstanceTool_WTTR_IN = Log("toolWttrIn")
     logInstanceTool_WWW_GARINASSET_COM = Log("toolWwwGarinassetCom")
