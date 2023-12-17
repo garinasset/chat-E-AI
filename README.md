@@ -12,13 +12,13 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
 
 <p align="center">
   <a href="#-面向开发者">
-    <img height="21" src="https://img.shields.io/badge/面向开发者-%23d4eaf7?style=flat-square&logo=xcode&logoColor=7d09f1" alt="development">
+    <img height="21" src="https://img.shields.io/badge/面向开发者-7d09f1?style=flat-square&logo=xcode&logoColor=ffffff" alt="development">
   </a>
   <a href="#-类似项目">
-    <img height="21" src="https://img.shields.io/badge/类似项目-7d09f1?style=flat-square" alt="project">
+    <img height="21" src="https://img.shields.io/badge/类似项目-%23d4eaf7?style=flat-square" alt="project">
   </a>
   <a href="https://github.com/garinops/chat-E-AI/blob/main/LICENSE">
-    <img height="21" src="https://img.shields.io/badge/license-MIT-ffffff?style=flat-square&labelColor=d4eaf7&color=7d09f1" alt="license">
+    <img height="21" src="https://img.shields.io/badge/license-MIT-ffffff?style=flat-square&labelColor=7d09f1&color=%23d4eaf7" alt="license">
   </a>
 </p>
 
