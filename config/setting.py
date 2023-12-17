@@ -15,7 +15,7 @@ from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
 #  OpenAI                         #
 ###################################
 # [OpenAI KEY]
-OPENAI_API_KEY = ''
+OPENAI_API_KEYS = [""]
 
 # [OpenAI模型]
 """编辑/chat-E-AI/AIs/OpenAI/AI_OpenAI_Model_Dicts.py"""

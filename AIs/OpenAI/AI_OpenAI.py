@@ -1,4 +1,3 @@
-import os
 import json
 import logging
 from collections import deque
@@ -8,15 +7,11 @@ import openai
 from openai import OpenAI
 
 from AIs.AI import AI
+from AIs.OpenAI.AI_OpenAI_Utils import AIOpenAIUtils
 from AIs.OpenAI.tools.AI_OPENAI_TOOLS import AIOpenAITools
-from config.setting import OPENAI_API_KEY, OPENAI_MODEL_DICTS, OPENAI_SYSTEM_CONTENT
+from config.setting import OPENAI_API_KEYS, OPENAI_MODEL_DICTS, OPENAI_SYSTEM_CONTENT
 from models.ModelResponse import Response
 from utils.utils_calculate import UtilsCalculate
-
-from dotenv import load_dotenv
-
-# 加载 .env 文件
-load_dotenv()
 
 # 日志logger
 loggerOpenAI = logging.getLogger("OpenAI")
@@ -27,7 +22,7 @@ class AIOpenAI(AI):
     def __init__(self):
         # 创建一个客户端实例
         self.client = OpenAI(
-            api_key=os.environ.get("OPENAI_API_KEY") if os.environ.get("OPENAI_API_KEY") else OPENAI_API_KEY,
+            api_key=AIOpenAIUtils.get_key_in_env() if AIOpenAIUtils.get_key_in_env() else AIOpenAIUtils.get_key_in_config(),
         )
         self.model = OPENAI_MODEL_DICTS["Name"]
         self.messageContentSystem = OPENAI_SYSTEM_CONTENT
