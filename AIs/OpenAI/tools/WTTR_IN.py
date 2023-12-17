@@ -64,13 +64,16 @@ class ToolWttrIn(object):
         except requests.exceptions.ConnectionError:
             loggerToolWttrIn.exception(f'requests.exceptions.ConnectionError')
             response_tool.answer = "亲爱的，我可能失去了天气服务的网络连接。"
+        except urllib3.exceptions.MaxRetryError:
+            loggerToolWttrIn.exception(f'urllib3.exceptions.MaxRetryError')
+            response_tool.answer = "亲爱的，我遇到了障碍。\n\n这可能是有很多人在同时使用天气服务。"
+        except requests.exceptions.SSLError:
+            loggerToolWttrIn.exception(f'urllib3.exceptions.MaxRetryError')
+            response_tool.answer = "亲爱的，我遇到了障碍。\n\n这可能是有很多人在同时使用天气服务。"
         except requests.exceptions.HTTPError:
             loggerToolWttrIn.exception(f'requests.exceptions.HTTPError')
             response_tool.answer = "亲爱的，我无法获取该地区的天气信息，大概是我们的尚没有收录该地区的天气情况。\n\n当然你也可以给我提供其他语言，这可能会增进我的理解。"
         except json.decoder.JSONDecodeError:
             loggerToolWttrIn.exception(f'json.decoder.JSONDecodeError')
             response_tool.answer = "亲爱的，我无法获取该地区的天气信息，你输入的地理位置是否过于宽泛呢？\n\n当然你也可以给我提供其他语言，这可能会增进我的理解。"
-        except urllib3.exceptions.MaxRetryError or requests.exceptions.SSLError:
-            loggerToolWttrIn.exception(f'urllib3.exceptions.MaxRetryError')
-            response_tool.answer = "亲爱的，我遇到了障碍。\n\n这可能是有很多人在同时使用天气服务。"
         return response_tool
