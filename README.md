@@ -219,8 +219,8 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
     <tr>
       <td>
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=605673387&image_size=2x3&color_scheme=dark">
-          <img alt="New participants of garinops - past 28 days" src="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=605673387&image_size=2x3&color_scheme=light">
+          <source media="(prefers-color-scheme: dark)" srcset="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=2x3&color_scheme=dark">
+          <img alt="New participants of garinops - past 28 days" src="https://next.ossinsight.io/widgets/official/compose-org-active-contributors/thumbnail.png?activity=new&period=past_28_days&owner_id=86670875&repo_ids=732435359&image_size=2x3&color_scheme=light">
         </picture>
       </td>
     </tr>
