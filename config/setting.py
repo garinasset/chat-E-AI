@@ -15,6 +15,8 @@ from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
 #  OpenAI                         #
 ###################################
 # [OpenAI KEY]
+"""OpenAI Key池。这是个数组，如果填入多个，例如["key1","key2"]，会轮询随机返回，简单负载均衡"""
+"""默认3"""
 OPENAI_API_KEYS = [""]
 
 # [OpenAI Rate Limits]
