@@ -27,11 +27,15 @@ class AIOpenAIUtils:
 
     @staticmethod
     def get_key_in_env():
-        _list_keys = os.environ.get('OPENAI_API_KEYS').split(",")
+        api_keys = os.environ.get('OPENAI_API_KEYS')
+
+        if not api_keys:
+            return None
+
+        _list_keys = api_keys.split(",")
+        _list_keys = [key.strip() for key in _list_keys if key.strip()]
+
         if not _list_keys:
             return None
-        else:
-            if len(_list_keys) == 1 and _list_keys[0] == "":
-                return None
-            else:
-                return random.choice(_list_keys)
+
+        return random.choice(_list_keys)
