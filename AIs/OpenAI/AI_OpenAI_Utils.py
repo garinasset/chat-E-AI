@@ -35,6 +35,3 @@ class AIOpenAIUtils:
                 return None
             else:
                 return random.choice(_list_keys)
-
-
-AIOpenAIUtils.get_key_in_config()
