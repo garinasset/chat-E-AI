@@ -23,6 +23,7 @@ def main():
             logInstanceItchatEAI.logger.info("Embedding Chat ITCHAT⠋⠋⠋")
             chatEAI = ItchatEAI()
             chatEAI.start()
+            print("111")
 
     except Exception as e:
         logInstanceChatEAI.logger.error(e)

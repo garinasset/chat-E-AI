@@ -3,9 +3,9 @@ import logging
 from E.itchat_E_OpenAI.ChatInstanceIEO import ChatInstanceIEO
 from chats.WeChat.SDK import itchat
 from chats.WeChat.SDK.itchat.content import TEXT
-from config.setting import ITCHAT_HOT_RELOAD, ITCHAT_ENABLECMDQR, SYSTEM_ITCHAT_DEBUG, \
-    USER_SUFFIX_COST, USER_SUFFIX, USER_SUFFIX_SOURCE, SYSTEM_ITCHAT_WHITELIST_GROUP, SYSTEM_ITCHAT_CALL_CODE, \
-    SYSTEM_ITCHAT_CALL_CODE_SELF, SYSTEM_ITCHAT_WHITELIST_FRIEND
+from config.setting import ITCHAT_HOT_RELOAD, ITCHAT_ENABLECMDQR, ITCHAT_DEBUG, \
+    USER_SUFFIX_COST, USER_SUFFIX, USER_SUFFIX_SOURCE, ITCHAT_WHITELIST_GROUP, ITCHAT_CALL_CODE, \
+    ITCHAT_CALL_CODE_SELF, ITCHAT_WHITELIST_FRIEND
 from utils.utils_string import UtilsString
 
 loggerItchatEAI = logging.getLogger("itchatEOpenAI")
@@ -91,16 +91,16 @@ class ItchatEAI:
                 loggerItchatEAI.info(
                     f'Message Signal TX: {to_user_name} {UtilsString.log_msg(replay)}')
             else:
-                is_whitelist = not SYSTEM_ITCHAT_WHITELIST_FRIEND or msg_itchat.NickName in SYSTEM_ITCHAT_WHITELIST_FRIEND
-                is_call_code = (SYSTEM_ITCHAT_CALL_CODE and msg_itchat.Text.startswith(
-                    SYSTEM_ITCHAT_CALL_CODE_SELF)) or msg_itchat.Text.startswith(SYSTEM_ITCHAT_CALL_CODE)
+                is_whitelist = not ITCHAT_WHITELIST_FRIEND or msg_itchat.NickName in ITCHAT_WHITELIST_FRIEND
+                is_call_code = (ITCHAT_CALL_CODE and msg_itchat.Text.startswith(
+                    ITCHAT_CALL_CODE_SELF)) or msg_itchat.Text.startswith(ITCHAT_CALL_CODE)
                 if is_whitelist and is_call_code:
                     # 自发他收
                     if msg_itchat.FromUserName == self.userName:
-                        if msg_itchat.Text.startswith(SYSTEM_ITCHAT_CALL_CODE_SELF):
+                        if msg_itchat.Text.startswith(ITCHAT_CALL_CODE_SELF):
                             loggerItchatEAI.info(
                                 f'Message Signal RX: {msg_itchat.FromUserName} {UtilsString.log_msg(msg_itchat.Text)}')
-                            msg_itchat.Text = msg_itchat.Text.lstrip(SYSTEM_ITCHAT_CALL_CODE_SELF)
+                            msg_itchat.Text = msg_itchat.Text.lstrip(ITCHAT_CALL_CODE_SELF)
                             userChatInstance = msg_itchat.FromUserName
                             to_user_name = msg_itchat.ToUserName
                             replay = self.replay_text(msg_itchat=msg_itchat, user_chat_instance=userChatInstance)
@@ -109,11 +109,11 @@ class ItchatEAI:
                                 f'Message Signal TX: {to_user_name} {UtilsString.log_msg(replay)}')
                     # 第三方发（朋友）
                     else:
-                        if msg_itchat.Text.startswith(SYSTEM_ITCHAT_CALL_CODE):
+                        if msg_itchat.Text.startswith(ITCHAT_CALL_CODE):
                             """记录日志"""
                             loggerItchatEAI.info(
                                 f'Message Signal RX: {msg_itchat.FromUserName} {UtilsString.log_msg(msg_itchat.Text)}')
-                            msg_itchat.Text = msg_itchat.Text.lstrip(SYSTEM_ITCHAT_CALL_CODE)
+                            msg_itchat.Text = msg_itchat.Text.lstrip(ITCHAT_CALL_CODE)
                             userChatInstance = msg_itchat.FromUserName
                             to_user_name = msg_itchat.FromUserName
                             replay = self.replay_text(msg_itchat=msg_itchat, user_chat_instance=userChatInstance)
@@ -123,17 +123,17 @@ class ItchatEAI:
 
         @itchat.msg_register(TEXT, isGroupChat=True)
         def handler_group_chat(msg_itchat):
-            is_whitelist = not SYSTEM_ITCHAT_WHITELIST_GROUP or msg_itchat.NickName in SYSTEM_ITCHAT_WHITELIST_GROUP
-            is_call_code = (SYSTEM_ITCHAT_CALL_CODE and msg_itchat.Text.startswith(
-                SYSTEM_ITCHAT_CALL_CODE_SELF)) or msg_itchat.Text.startswith(SYSTEM_ITCHAT_CALL_CODE)
+            is_whitelist = not ITCHAT_WHITELIST_GROUP or msg_itchat.NickName in ITCHAT_WHITELIST_GROUP
+            is_call_code = (ITCHAT_CALL_CODE and msg_itchat.Text.startswith(
+                ITCHAT_CALL_CODE_SELF)) or msg_itchat.Text.startswith(ITCHAT_CALL_CODE)
             if is_whitelist and is_call_code or msg_itchat.IsAt:
                 # 自发群收，带有关键字才响应，群ID作为会话实例Key
                 if msg_itchat.FromUserName == self.userName and msg_itchat.Text.startswith(
-                        SYSTEM_ITCHAT_CALL_CODE_SELF):
+                        ITCHAT_CALL_CODE_SELF):
                     """记录日志"""
                     loggerItchatEAI.info(
                         f'Message Group RX: {msg_itchat.FromUserName} {UtilsString.log_msg(msg_itchat.Text)}')
-                    msg_itchat.Text = msg_itchat.Text.lstrip(SYSTEM_ITCHAT_CALL_CODE_SELF)
+                    msg_itchat.Text = msg_itchat.Text.lstrip(ITCHAT_CALL_CODE_SELF)
                     userChatInstance = msg_itchat.ToUserName
                     to_user_name = msg_itchat.ToUserName
                     replay = self.replay_text(msg_itchat=msg_itchat, user_chat_instance=userChatInstance)
@@ -142,7 +142,7 @@ class ItchatEAI:
                     loggerItchatEAI.info(
                         f'Message Group TX: {to_user_name} {UtilsString.log_msg(replay)}')
                 # 他发群收，@或者匹配非空关键字才响应，作为会话实例Key
-                if msg_itchat.IsAt or (SYSTEM_ITCHAT_CALL_CODE and msg_itchat.Text.startswith(SYSTEM_ITCHAT_CALL_CODE)):
+                if msg_itchat.IsAt or (ITCHAT_CALL_CODE and msg_itchat.Text.startswith(ITCHAT_CALL_CODE)):
                     """记录日志"""
                     loggerItchatEAI.info(
                         f'Message Group RX: {msg_itchat.FromUserName} {UtilsString.log_msg(msg_itchat.Text)}')
@@ -155,4 +155,4 @@ class ItchatEAI:
                     loggerItchatEAI.info(
                         f'Message Group TX: {to_user_name} {UtilsString.log_msg(replay)}')
 
-        itchat.run(debug=SYSTEM_ITCHAT_DEBUG)
+        itchat.run(debug=ITCHAT_DEBUG)

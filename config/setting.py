@@ -12,7 +12,7 @@ from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
 # AI模块配置
 """Config Which You Want to Use."""
 ###################################
-#  OpenAI                         #
+#  OpenAI - openai.com            #
 ###################################
 # [OpenAI KEY]
 """OpenAI Key池。这是个数组，如果填入多个，例如["key1","key2"]，会轮询随机返回，简单负载均衡"""
@@ -44,7 +44,7 @@ OPENAI_TOOLS_CONFIG = [
 # chat模块配置
 """Config Which You Want to Use."""
 ###################################
-# ItChat                          #
+# ItChat - 个人微信                 #
 ###################################
 CHAT_ItChat = 'ItChat'
 
@@ -59,11 +59,34 @@ ITCHAT_ENABLECMDQR = 2
 # [ItChat-Debug模式]
 """True or False"""
 """默认False"""
-SYSTEM_ITCHAT_DEBUG = False
+ITCHAT_DEBUG = False
 
-# 系统配置 ###########################
-"""Config Which You Want to want."""
-####################################
+# [ItChat呼叫暗号]
+""""AI"表示回复AI开头的消息；""表示回复所有消息。"""
+"""默认值：AI"""
+ITCHAT_CALL_CODE = "AI"
+
+# [ItChat保留暗号]
+""""如果不设置，当机器接管所有信息时，如果登录账号人工回复，机器也会响应回复。"""
+"""默认值：AI"""
+ITCHAT_CALL_CODE_SELF = "AI"
+
+# [ItChat私聊白名单]
+"""{}表示全部；{"小明","小李"}表示只对小明、小李开放"""
+"""默认全部"""
+ITCHAT_WHITELIST_FRIEND = {}
+
+# [ItChat群聊白名单]
+"""{}表示全部；{"AAA","BBB"}表示名称为AAA、BBB的群开放"""
+"""默认全部"""
+ITCHAT_WHITELIST_GROUP = {}
+
+
+# 系统配置
+"""Config Which You Want to Use."""
+###################################
+# system - chat-E-AI               #
+###################################
 # [启用OpenAI]
 """True or False"""
 """默认True"""
@@ -74,32 +97,13 @@ SYSTEM_OPENAI = True
 """默认True"""
 SYSTEM_ITCHAT = True
 
-# [ItChat呼叫暗号]
-""""AI"表示回复AI开头的消息；""表示回复所有消息。"""
-"""默认值：AI"""
-SYSTEM_ITCHAT_CALL_CODE = "AI"
-
-# [ItChat保留暗号]
-""""如果不设置，当机器接管所有信息时，如果登录账号人工回复，机器也会响应回复。"""
-"""默认值：AI"""
-SYSTEM_ITCHAT_CALL_CODE_SELF = "AI"
-
-# [ItChat私聊白名单]
-"""{}表示全部；{"小明","小李"}表示只对小明、小李开放"""
-"""默认全部"""
-SYSTEM_ITCHAT_WHITELIST_FRIEND = {}
-
-# [ItChat群聊白名单]
-"""{}表示全部；{"AAA","BBB"}表示名称为AAA、BBB的群开放"""
-"""默认全部"""
-SYSTEM_ITCHAT_WHITELIST_GROUP = {}
-
 # [上下文携带]
 """会话记录上下文对，0代表请求不携带历史会话记录。"""
 """默认3"""
 USER_MESSAGES_LENGTH = 3
 
 # [回复后缀]
+"""分割线"""
 USER_SUFFIX = "------------"
 """AI及工具来源"""
 USER_SUFFIX_SOURCE = True
