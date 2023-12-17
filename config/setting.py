@@ -17,6 +17,11 @@ from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
 # [OpenAI KEY]
 OPENAI_API_KEYS = [""]
 
+# [OpenAI Rate Limits]
+"""指定Rate Limits限制（次数/分钟），触发限制会自动依据限制设定等待重试。设定为0表示不限制。"""
+"""默认3"""
+OPENAI_API_RATE_LIMITS = 3
+
 # [OpenAI模型]
 """编辑/chat-E-AI/AIs/OpenAI/AI_OpenAI_Model_Dicts.py"""
 """按文档说明，贡献补充其他模型"""

@@ -9,7 +9,7 @@ from openai import OpenAI
 from AIs.AI import AI
 from AIs.OpenAI.AI_OpenAI_Utils import AIOpenAIUtils
 from AIs.OpenAI.tools.AI_OPENAI_TOOLS import AIOpenAITools
-from config.setting import OPENAI_API_KEYS, OPENAI_MODEL_DICTS, OPENAI_SYSTEM_CONTENT
+from config.setting import OPENAI_MODEL_DICTS, OPENAI_SYSTEM_CONTENT, OPENAI_API_RATE_LIMITS
 from models.ModelResponse import Response
 from utils.utils_calculate import UtilsCalculate
 
@@ -59,7 +59,10 @@ class AIOpenAI(AI):
         """捕获openai.RateLimitError，回退重试。"""
 
         def _backoff_jitter() -> float:
-            return 20
+            if OPENAI_API_RATE_LIMITS == 0:
+                return 0
+            jitter = 60 / OPENAI_API_RATE_LIMITS
+            return jitter
 
         @backoff.on_exception(backoff.expo,
                               openai.RateLimitError,
