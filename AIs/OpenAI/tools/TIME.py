@@ -60,10 +60,7 @@ class ToolTime(object):
     def get_time(location: str, offset_hours: str) -> ResponseTool:
         response_tool = ResponseTool(answer="", source="Time")
 
-        # 设置本地化信息为中文
-        locale.setlocale(locale.LC_TIME, 'zh_CN.UTF-8')
-
-        # 获取当前时间
+        # 获取当前时间（UTC）
         current_time = datetime.utcnow()
 
         # 计算指定偏移量的时间
@@ -71,6 +68,7 @@ class ToolTime(object):
         target_time = current_time + offset
 
         # 格式化时间
-        format_time = target_time.strftime("%Y年%m月%d日，%A，%H:%M:%S。")
+        format_time = target_time.strftime("%Y-%m-%d, %A, %H:%M:%S")
         response_tool.answer = "{}时间，{}".format(location, format_time)
+
         return response_tool
