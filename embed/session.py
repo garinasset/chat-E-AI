@@ -1,5 +1,5 @@
 # 会话实例中间件：1、管理微信会话；2、组织会话记录上下文。
-from AIs.openai.chat import AIOpenAIChat
+from ai.openai.chat import AIOpenAIChat
 from structures.queue import MessagesQueue
 from config.settings import USER_MESSAGES_LENGTH
 

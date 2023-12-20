@@ -4,10 +4,10 @@
 ##################################################################
 
 
-from AIs.openai.assets.models import MODEL_DICTS_OPENAI
-from AIs.openai.tools.TOOL_TIME import ToolTime
-from AIs.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
-from AIs.openai.tools.WTTR_IN import ToolWttrIn
+from ai.openai.assets.models import MODEL_DICTS_OPENAI
+from ai.openai.tools.TOOL_TIME import ToolTime
+from ai.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
+from ai.openai.tools.WTTR_IN import ToolWttrIn
 
 # AI模块配置
 """Config Which You Want to Use."""
@@ -28,7 +28,7 @@ OPENAI_API_KEYS = [""]
 OPENAI_API_RATE_LIMITS = 3
 
 # [OpenAI模型]
-"""参看/chat-E-AI/AIs/openai/assets/models.py中定义好的模型"""
+"""参看/chat-E-AI/ai/openai/assets/models.py中定义好的模型"""
 """也按文档说明，贡献补充其他模型"""
 OPENAI_MODEL_DICTS = MODEL_DICTS_OPENAI["gpt-3.5-turbo-1106"]
 

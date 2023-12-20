@@ -1,5 +1,5 @@
-from chats.WeChat.SDK import itchat
-from chats.WeChat.SDK.itchat.content import TEXT
+from chat.WeChat.SDK import itchat
+from chat.WeChat.SDK.itchat.content import TEXT
 from common.log import LogUtils
 from config.develop import ITCHAT_DEBUG
 from config.settings import ITCHAT_HOT_RELOAD, ITCHAT_ENABLECMDQR

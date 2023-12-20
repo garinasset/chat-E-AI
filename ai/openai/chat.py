@@ -5,8 +5,8 @@ import backoff as backoff
 import openai
 from openai import OpenAI
 
-from AIs.openai.tools.tools import OpenAITools
-from AIs.openai.utils.key import OpenAIUtilsKey
+from ai.openai.tools.tools import OpenAITools
+from ai.openai.utils.key import OpenAIUtilsKey
 from common.log import LogUtils
 from config.settings import OPENAI_MODEL_DICTS, OPENAI_SYSTEM_CONTENT, OPENAI_API_RATE_LIMITS, OPENAI_BASE_URL
 from models.response import ResponseAI

@@ -1,6 +1,6 @@
-from AIs.openai.tools.TOOL_TIME import ToolTime
-from AIs.openai.tools.WTTR_IN import ToolWttrIn
-from AIs.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
+from ai.openai.tools.TOOL_TIME import ToolTime
+from ai.openai.tools.WTTR_IN import ToolWttrIn
+from ai.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
 from config.settings import OPENAI_TOOLS_CONFIG
 from models.response import ResponseBase
 
