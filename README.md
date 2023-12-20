@@ -46,11 +46,7 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
     ```
     python3.10 -m venv venv-chat-E-AI
     ```
-  - 激活venv虚拟环境（Windows）。
-    ```
-    venv-chat-E-AI\Scripts\activate
-    ```
-  - 激活venv虚拟环境（Linux\Unix\MacOS）。
+  - 激活venv虚拟环境（Linux\Unix\MacOS）注意，Windows有所不同。
     ```
     source venv-chat-E-AI/bin/activate
     ```

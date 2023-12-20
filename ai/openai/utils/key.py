@@ -1,14 +1,15 @@
-import logging
 import os
 import random
 
-from config.settings import OPENAI_API_KEYS
 from dotenv import load_dotenv
+
+from common.log import LogUtils
+from config.settings import OPENAI_API_KEYS
 
 # 加载 .env 文件
 load_dotenv()
 
-loggerOpenAI = logging.getLogger("OpenAI")
+loggerOpenAI = LogUtils.new_logger("openai-Key")
 
 
 class OpenAIUtilsKey:
