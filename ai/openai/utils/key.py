@@ -18,10 +18,10 @@ class OpenAIUtilsKey:
     def get_key_in_config():
         _list_keys = OPENAI_API_KEYS
         if not _list_keys:
-            loggerOpenAI.error("The OpenAIS Keys Configure Item Were Not Found in The Configuration File.")
+            loggerOpenAI.error("The OpenAI Key Configure Item Were Not Found in The Configuration File.")
         else:
             if len(_list_keys) == 1 and _list_keys[0] == "":
-                loggerOpenAI.error("The OpenAIS Key Has Not Been Configured in The Configuration File.")
+                loggerOpenAI.error("The OpenAI Key Has Not Been Configured in The Configuration File.")
             else:
                 return random.choice(_list_keys)
         return

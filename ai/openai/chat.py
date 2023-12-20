@@ -20,10 +20,13 @@ loggerBackoff = LogUtils.new_logger("library-backoff")
 class AIOpenAIChat:
     def __init__(self):
         # 创建一个客户端实例
-        self.client = OpenAI(
-            api_key=OpenAIUtilsKey.get_key_in_env() if OpenAIUtilsKey.get_key_in_env() else OpenAIUtilsKey.get_key_in_config(),
-            base_url=OPENAI_BASE_URL if OPENAI_BASE_URL else None
-        )
+        try:
+            self.client = OpenAI(
+                api_key=OpenAIUtilsKey.get_key_in_env() if OpenAIUtilsKey.get_key_in_env() else OpenAIUtilsKey.get_key_in_config(),
+                base_url=OPENAI_BASE_URL if OPENAI_BASE_URL else None
+            )
+        except openai.OpenAIError as e:
+            loggerOpenAI.exception(f'Exception(openai.OpenAIError) was encountered when self.client = OpenAI(api_key=***)')
         self.model = OPENAI_MODEL_DICTS["Name"]
         self.msgSys = OPENAI_SYSTEM_CONTENT
         self.msgUserAssi = deque()
