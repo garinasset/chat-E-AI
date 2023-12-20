@@ -3,6 +3,7 @@ from collections import deque
 
 import backoff as backoff
 import openai
+from dotenv import load_dotenv
 from openai import OpenAI
 
 from ai.openai.tools.tools import OpenAITools
@@ -12,6 +13,9 @@ from config.settings import OPENAI_MODEL_DICTS, OPENAI_SYSTEM_CONTENT, OPENAI_AP
 from models.response import ResponseAI
 from utils.calculate import UtilsCalculate
 
+# 加载 .env 文件
+load_dotenv()
+
 # 日志logger
 loggerOpenAI = LogUtils.new_logger("openai-Chat")
 loggerBackoff = LogUtils.new_logger("library-backoff")
@@ -20,13 +24,10 @@ loggerBackoff = LogUtils.new_logger("library-backoff")
 class AIOpenAIChat:
     def __init__(self):
         # 创建一个客户端实例
-        try:
-            self.client = OpenAI(
-                api_key=OpenAIUtilsKey.get_key_in_env() if OpenAIUtilsKey.get_key_in_env() else OpenAIUtilsKey.get_key_in_config(),
-                base_url=OPENAI_BASE_URL if OPENAI_BASE_URL else None
-            )
-        except openai.OpenAIError as e:
-            loggerOpenAI.exception(f'Exception(openai.OpenAIError) was encountered when self.client = OpenAI(api_key=***)')
+        self.client = OpenAI(
+            api_key=OpenAIUtilsKey.get_key_in_env() if OpenAIUtilsKey.get_key_in_env() else OpenAIUtilsKey.get_key_in_config(),
+            base_url=OPENAI_BASE_URL if OPENAI_BASE_URL else None
+        )
         self.model = OPENAI_MODEL_DICTS["Name"]
         self.msgSys = OPENAI_SYSTEM_CONTENT
         self.msgUserAssi = deque()
