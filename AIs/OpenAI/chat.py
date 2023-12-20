@@ -5,9 +5,8 @@ import backoff as backoff
 import openai
 from openai import OpenAI
 
-from AIs.ais import AIS
-from AIs.openai.utils.key import OpenAIUtilsKey
 from AIs.openai.tools.tools import OpenAITools
+from AIs.openai.utils.key import OpenAIUtilsKey
 from common.log import LogUtils
 from config.settings import OPENAI_MODEL_DICTS, OPENAI_SYSTEM_CONTENT, OPENAI_API_RATE_LIMITS, OPENAI_BASE_URL
 from models.response import ResponseAI
@@ -18,7 +17,7 @@ loggerOpenAI = LogUtils.new_logger("openai-Chat")
 loggerBackoff = LogUtils.new_logger("library-backoff")
 
 
-class AIOpenAIChat(AIS):
+class AIOpenAIChat:
     def __init__(self):
         # 创建一个客户端实例
         self.client = OpenAI(
