@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class AI(ABC):
+class AIS(ABC):
     @abstractmethod
     def response(self):
         pass

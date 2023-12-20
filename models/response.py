@@ -1,13 +1,11 @@
-from typing import Optional
-
 from pydantic import BaseModel
 
 
-class ResponseTool(BaseModel):
+class ResponseBase(BaseModel):
     answer: str
     source: str
 
 
-class Response(ResponseTool):
+class ResponseAI(ResponseBase):
     aiCost: float
     aiCostCurrency: str

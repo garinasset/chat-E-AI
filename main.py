@@ -1,31 +1,22 @@
-from E.itchat_E_OpenAI.itchat_E_AI import ItchatEAI
-from config.setting import SYSTEM_ITCHAT
-from system_components.log import Log
+from embed.clients.itchat.itchat import ItchatClient
+from common.log import LogUtils
+from config.settings import SYSTEM_ITCHAT
 
 
 def main():
-    logInstanceChatEAI = Log("chat-E-AI")
-    logInstanceChatEAI.logger.info("⠋⠋⠋System Booting⠋⠋⠋")
+    loggerSystem = LogUtils.new_logger("chat-E-AI")
+    loggerSystem.info("⠋⠋⠋System Booting⠋⠋⠋")
 
-    logInstanceItchatEAI = Log("itchatEOpenAI")
-    logInstanceOpenAI = Log("OpenAI")
-    logInstanceBackoff = Log("backoff")
-    logInstanceTool_WTTR_IN = Log("toolTime")
-    logInstanceTool_WTTR_IN = Log("toolWttrIn")
-    logInstanceTool_WWW_GARINASSET_COM = Log("toolWwwGarinassetCom")
+
     try:
-        # TODO 检查配置
-
-        # TODO KILL
-
-        # 运行itchat-E-OpenAI
+        # Embedding Access
         if SYSTEM_ITCHAT:
-            logInstanceItchatEAI.logger.info("Embedding Chat ITCHAT⠋⠋⠋")
-            chatEAI = ItchatEAI()
-            chatEAI.start()
+            loggerSystem.info("Access Chat WeChat Use ITCHAT.")
+            client = ItchatClient()
+            client.startup()
 
     except Exception as e:
-        logInstanceChatEAI.logger.error(e)
+        loggerSystem.error(e)
 
 
 if __name__ == "__main__":

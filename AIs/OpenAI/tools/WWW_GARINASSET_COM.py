@@ -1,13 +1,13 @@
-# OpenAI Tools工具实现
+# openai Tools工具实现
 # 必须实现一个TOOL_MODEL
 # 必须有一个和TOOL_MODEL中函数名称对应的静态方法实现
-import logging
-import requests
 import pandas as pd
+import requests
 
-from models.ModelResponse import ResponseTool
+from common.log import LogUtils
+from models.response import ResponseBase
 
-loggerToolWwwGarinassetCom = logging.getLogger("toolWwwGarinassetCom")
+logger = LogUtils.new_logger("toolWwwGarinassetCom")
 
 
 class ToolWwwGarinassetCom(object):
@@ -101,8 +101,8 @@ class ToolWwwGarinassetCom(object):
         return element_overview
 
     @staticmethod
-    def get_indicator_overview(region: str, name: str) -> ResponseTool:
-        response_tool = ResponseTool(answer="", source="嘉林数据")
+    def get_indicator_overview(region: str, name: str) -> ResponseBase:
+        response_tool = ResponseBase(answer="", source="嘉林数据")
         # API请求
         query = "{} {}".format(region, name)
         url = "https://api.garinasset.com/www/v1/searches/indicators"
@@ -135,24 +135,29 @@ class ToolWwwGarinassetCom(object):
             else:
                 response_tool.answer = "亲爱的，我无法获取该项数据信息，大概是数据商尚没有收录该数据。\n\n当然也可能是我错误理解了你的问题。"
                 return response_tool
-        except requests.exceptions.HTTPError as e:
-            if response_api.status_code == 422:
-                loggerToolWwwGarinassetCom.exception("response.status_code == 422")
+        except requests.exceptions.HTTPError:
+            _status_code = response_api.status_code
+            if _status_code == 422:
+                logger.warning(f"Exception(requests.exceptions.HTTPError{_status_code}) was encountered when get_indicator_overview({region},{name})")
                 response_tool.answer = "亲爱的，我无法提供相关的数据服务，你是否需要修改问题呢？"
                 return response_tool
-            elif response_api.status_code >= 500:
-                loggerToolWwwGarinassetCom.exception("response.status_code >= 500")
+            elif _status_code == 401:
+                logger.warning(f"Exception(requests.exceptions.HTTPError[{_status_code}]) was encountered when get_indicator_overview({region},{name})")
+                response_tool.answer = "亲爱的，你没有嘉林数据的访问权限，暂时无法给你提供数据响应。"
+                return response_tool
+            elif _status_code >= 500:
+                logger.warning(f"Exception(requests.exceptions.HTTPError[{_status_code}]) was encountered when get_indicator_overview({region},{name})")
                 response_tool.answer = "亲爱的，宏微观经济数据库正在升级，暂时无法给你提供响应。"
                 return response_tool
             else:
-                loggerToolWwwGarinassetCom.exception("requests.exceptions.HTTPError")
+                logger.warning(f"Exception(requests.exceptions.HTTPError[{_status_code}]) was encountered when get_indicator_overview({region},{name})")
                 response_tool.answer = "亲爱的，我遇到了未知的网络故障，这需要一定的处理时间。"
                 return response_tool
         except requests.exceptions.ConnectionError as e:
-            loggerToolWwwGarinassetCom.exception("requests.exceptions.ConnectionError")
+            logger.warning(f"Exception(requests.exceptions.ConnectionError was encountered when get_indicator_overview({region},{name})")
             response_tool.answer = "亲爱的，我可能失去了宏微观经济数据库服务的网络连接。"
             return response_tool
-        except requests.exceptions.RequestException as e:
-            loggerToolWwwGarinassetCom.exception("requests.exceptions.RequestException")
+        except requests.exceptions.RequestException:
+            logger.warning(f"Exception(requests.exceptions.RequestException was encountered when get_indicator_overview({region},{name})")
             response_tool.answer = "亲爱的，我明白我现在的处境，程序运行发生了故障哦。"
             return response_tool

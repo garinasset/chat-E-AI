@@ -1,11 +1,11 @@
-from AIs.OpenAI.tools.TIME import ToolTime
-from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
-from AIs.OpenAI.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
-from config.setting import OPENAI_TOOLS_CONFIG
-from models.ModelResponse import ResponseTool
+from AIs.openai.tools.TOOL_TIME import ToolTime
+from AIs.openai.tools.WTTR_IN import ToolWttrIn
+from AIs.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
+from config.settings import OPENAI_TOOLS_CONFIG
+from models.response import ResponseBase
 
 
-class AIOpenAITools:
+class OpenAITools:
 
     @staticmethod
     def get_tools() -> list:
@@ -17,7 +17,7 @@ class AIOpenAITools:
         return tools
 
     @staticmethod
-    def handle(name_tool_call: str, parameter_variables) -> ResponseTool:
+    def handle(name_tool_call: str, parameter_variables) -> ResponseBase:
         """1、处理路由OpenAI响应的function.name决定。"""
         """2、工具函数参数及变量值也是由OpenAI响应决定，需要具体工具具体相应处理。"""
         match name_tool_call:

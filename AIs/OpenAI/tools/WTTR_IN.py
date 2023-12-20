@@ -1,17 +1,17 @@
 import json
-import logging
-
 import requests
 import pywttr
 import urllib3
+from timeout_decorator import timeout_decorator
 
-from models.ModelResponse import ResponseTool
+from common.log import LogUtils
+from models.response import ResponseBase
 
-# OpenAI Tools工具实现
+# openai Tools工具实现
 # 必须实现一个TOOL_MODEL
 # 必须有一个和TOOL_MODEL中函数名称对应的静态方法实现
 
-loggerToolWttrIn = logging.getLogger("toolWttrIn")
+loggerToolWttrIn = LogUtils.new_logger("toolWttrIn")
 
 
 class ToolWttrIn(object):
@@ -39,9 +39,10 @@ class ToolWttrIn(object):
     }
 
     @staticmethod
-    def get_weather(location: str) -> ResponseTool:
+    @timeout_decorator.timeout(4)
+    def get_weather(location: str) -> ResponseBase:
         language = pywttr.Language("zh-cn")
-        response_tool = ResponseTool(answer="", source="wttr•in")
+        response_tool = ResponseBase(answer="", source="wttr•in")
 
         """"疑难杂症处理"""
         if location in ["南极"]:
@@ -61,19 +62,19 @@ class ToolWttrIn(object):
                       f"湿度{weather_wttr.current_condition[0].humidity}%，" \
                       f"降水{weather_wttr.current_condition[0].precip_mm}mm。"
             response_tool.answer = weather
+        except timeout_decorator.TimeoutError:
+            loggerToolWttrIn.warning(f'Exception(timeout_decorator.TimeoutError) was encountered when get_weather({location})')
+            response_tool.answer = "亲爱的，wttr·in天气服务器可能发生了宕机，在使用过程中请节制访问。"
         except requests.exceptions.ConnectionError:
-            loggerToolWttrIn.exception(f'requests.exceptions.ConnectionError')
+            loggerToolWttrIn.warning(f'Exception(requests.exceptions.ConnectionError) was encountered when get_weather({location})')
             response_tool.answer = "亲爱的，我可能失去了天气服务的网络连接。"
         except urllib3.exceptions.MaxRetryError:
-            loggerToolWttrIn.exception(f'urllib3.exceptions.MaxRetryError')
-            response_tool.answer = "亲爱的，我遇到了障碍。\n\n这可能是有很多人在同时使用天气服务。"
-        except requests.exceptions.SSLError:
-            loggerToolWttrIn.exception(f'urllib3.exceptions.MaxRetryError')
+            loggerToolWttrIn.warning(f'Exception(urllib3.exceptions.MaxRetryError) was encountered when get_weather({location})')
             response_tool.answer = "亲爱的，我遇到了障碍。\n\n这可能是有很多人在同时使用天气服务。"
         except requests.exceptions.HTTPError:
-            loggerToolWttrIn.exception(f'requests.exceptions.HTTPError')
+            loggerToolWttrIn.warning(f'Exception(requests.exceptions.HTTPError) was encountered when get_weather({location})')
             response_tool.answer = "亲爱的，我无法获取该地区的天气信息，大概是我们的尚没有收录该地区的天气情况。\n\n当然你也可以给我提供其他语言，这可能会增进我的理解。"
         except json.decoder.JSONDecodeError:
-            loggerToolWttrIn.exception(f'json.decoder.JSONDecodeError')
+            loggerToolWttrIn.warning(f'Exception(json.decoder.JSONDecodeError) was encountered when get_weather({location})')
             response_tool.answer = "亲爱的，我无法获取该地区的天气信息，你输入的地理位置是否过于宽泛呢？\n\n当然你也可以给我提供其他语言，这可能会增进我的理解。"
         return response_tool

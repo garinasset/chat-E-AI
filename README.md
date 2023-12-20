@@ -155,12 +155,12 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
 - **嵌入其他即时通讯**
 - **OpenAI tools开发**
   > 通过OpenAI的工具函数功能（tools），开发者能进一步拓展GPT的能力，比如联网获取实时信息，与第三方应用互动等。
-  - 参照"./AIs/OpenAI/tools/TIME.py"这个时间工具，你可以轻松开发其他插件。
-  - tools工具已经在项目实现集成，你不必处理其他细节，只需要专注定义自己的插件工具，以及你的API调用即可。
+  - 参照"chat-E-AI/AIs/openai/tools/TOOL_TIME.py"这个时间工具，你可以轻松开发其他插件。
+  - tools工具已经在openai Chat接口实现集成，你不必处理请求细节，只需要专注定义自己的插件工具，以及你的API调用即可。
   - 注意开发规范。
 - **OpenAI 模型添加**
   > 项目已OpenAI几个常用封装模型为字典，可贡献补充其他模型。
-  - 编辑/chat-E-AI/AIs/OpenAI/AI_OpenAI_Model_Dicts.py
+  - 编辑chat-E-AI/AIs/openai/assets/models.py
   - 按文档规范，贡献补充其他模型。
   
 

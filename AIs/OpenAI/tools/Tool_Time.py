@@ -1,21 +1,20 @@
-import logging
-
 from datetime import datetime, timedelta
 
-from models.ModelResponse import ResponseTool
+from common.log import LogUtils
+from models.response import ResponseBase
 
 """开发者规范"""
 """开发Tools工具详细步骤："""
-"""1、在main.py创建Log实例，例如：logInstanceTool_WTTR_IN = Log("toolTime")"""
-"""2、创建Tools工具类，实例化一个logger实例，用于记录可能的异常，例如：loggerToolTime = logging.getLogger("toolTime")"""
+"""1、创建logger实例，用以日志记录。例如：logger = LogUtils.new_logger("toolTime")"""
+"""2、创建Tools工具类 例如class ToolTime(object):"""
 """3、创建一个名为"TOOL_MODEL"的字典，字典中可编辑的键值已在下方示例中注释列出，其他不可编辑。注意字典格式！"""
-"""4、创建一个工具函数，返回值为ResponseTool模型。注意函数名和"TOOL_MODEL"字典中的name值保持一致，示例中为get_time，上下一致"""
+"""4、创建一个工具函数，返回值为ResponseBase模型。注意函数名和"TOOL_MODEL"字典中的name值保持一致，示例中为get_time，上下一致"""
 """5、实现工具函数，返回相应答复。"""
-"""6、在AIs.OpenAI.tools.AI_OPENAI_TOOLS.py中的AIOpenAITools类中的代码最下方增加case，以注册Tools工具类。观察规律，很好填写。"""
+"""6、在AIs.openai.tools.tools.py中的AIOpenAITools类中的代码最下方增加case，以注册Tools工具类。观察规律，很好填写。"""
 """7、在config.setting.py中的 OPENAI_TOOLS_CONFIG 数组中增加一条配置。"""
 """8、运行调试"""
 
-loggerToolTime = logging.getLogger("toolTime")
+logger = LogUtils.new_logger("toolTime")
 
 
 class ToolTime(object):
@@ -56,8 +55,8 @@ class ToolTime(object):
     }
 
     @staticmethod
-    def get_time(location: str, offset_hours: str) -> ResponseTool:
-        response_tool = ResponseTool(answer="", source="Time")
+    def get_time(location: str, offset_hours: str) -> ResponseBase:
+        response_tool = ResponseBase(answer="", source="Time")
 
         # 获取当前时间（UTC）
         current_time = datetime.utcnow()

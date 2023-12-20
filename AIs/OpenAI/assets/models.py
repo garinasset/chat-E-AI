@@ -1,4 +1,4 @@
-# OpenAI 模型字典
+# openai 模型字典
 # TODO 添加模型
 """参阅"""
 """https://openai.com/pricing"""

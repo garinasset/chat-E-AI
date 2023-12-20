@@ -4,16 +4,19 @@
 ##################################################################
 
 
-from AIs.OpenAI.AI_OpenAI_Model_Dicts import MODEL_DICTS_OPENAI
-from AIs.OpenAI.tools.TIME import ToolTime
-from AIs.OpenAI.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
-from AIs.OpenAI.tools.WTTR_IN import ToolWttrIn
+from AIs.openai.assets.models import MODEL_DICTS_OPENAI
+from AIs.openai.tools.TOOL_TIME import ToolTime
+from AIs.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
+from AIs.openai.tools.WTTR_IN import ToolWttrIn
 
 # AI模块配置
 """Config Which You Want to Use."""
 ###################################
 #  OpenAI - openai.com            #
 ###################################
+"""OpenAI API接口地址，空表示采用官方地址，配置以使用你的反向代理地址"""
+"""默认空"""
+OPENAI_BASE_URL = ""
 # [OpenAI KEY]
 """OpenAI Key池。这是个数组，如果填入多个，例如["key1","key2"]，会轮询随机返回，简单负载均衡"""
 """默认3"""
@@ -25,8 +28,8 @@ OPENAI_API_KEYS = [""]
 OPENAI_API_RATE_LIMITS = 3
 
 # [OpenAI模型]
-"""编辑/chat-E-AI/AIs/OpenAI/AI_OpenAI_Model_Dicts.py"""
-"""按文档说明，贡献补充其他模型"""
+"""参看/chat-E-AI/AIs/openai/assets/models.py中定义好的模型"""
+"""也按文档说明，贡献补充其他模型"""
 OPENAI_MODEL_DICTS = MODEL_DICTS_OPENAI["gpt-3.5-turbo-1106"]
 
 # [OpenAI系统提示]
@@ -56,18 +59,15 @@ ITCHAT_HOT_RELOAD = True
 """默认2"""
 ITCHAT_ENABLECMDQR = 2
 
-# [ItChat-Debug模式]
-"""True or False"""
-"""默认False"""
-ITCHAT_DEBUG = False
-
-# [ItChat呼叫暗号]
-""""AI"表示回复AI开头的消息；""表示回复所有消息。"""
+# [ItChat外部呼叫暗号]
+"""|"AI"表示回复所有白名单中AI开头的消息，不包括自己"""
+"""|""表示回复所有消息。"""
 """默认值：AI"""
 ITCHAT_CALL_CODE = "AI"
 
-# [ItChat保留暗号]
-""""如果不设置，当机器接管所有信息时，如果登录账号人工回复，机器也会响应回复。"""
+# [ItChat内部呼叫暗号]
+"""|"AI"表示回复登录账号手动发出的AI开头的信息，注意是手动！；"""
+"""不设置表示回复手动发出的所有消息"""
 """默认值：AI"""
 ITCHAT_CALL_CODE_SELF = "AI"
 
