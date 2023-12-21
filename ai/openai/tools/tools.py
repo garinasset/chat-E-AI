@@ -32,6 +32,7 @@ class OpenAITools:
                 location = parameter_variables.get("location")
                 toolResponse = ToolWttrIn.get_weather(location=location)
                 return toolResponse
+            # 3.时间工具-处理
             case ToolTime.get_time.__name__:
                 location = parameter_variables.get("location")
                 offset_hours = parameter_variables.get("offset_hours")
