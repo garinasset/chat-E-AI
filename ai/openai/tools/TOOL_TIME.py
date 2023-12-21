@@ -10,7 +10,7 @@ from models.response import ResponseBase
 """3、创建一个名为"TOOL_MODEL"的字典，字典中可编辑的键值已在下方示例中注释列出，其他不可编辑。注意字典格式！"""
 """4、创建一个工具函数，返回值为ResponseBase模型。注意函数名和"TOOL_MODEL"字典中的name值保持一致，示例中为get_time，上下一致"""
 """5、实现工具函数，返回相应答复。"""
-"""6、在AIs.openai.tools.tools.py中的AIOpenAITools类中的代码最下方增加case，以注册Tools工具类。观察规律，很好填写。"""
+"""6、在ai.openai.tools.tools.py中的OpenAITools类中的代码最下方增加case，以注册Tools工具类。观察规律，很好填写。"""
 """7、在config.setting.py中的 OPENAI_TOOLS_CONFIG 数组中增加一条配置。"""
 """8、运行调试"""
 
