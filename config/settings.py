@@ -49,8 +49,6 @@ OPENAI_TOOLS_CONFIG = [
 ###################################
 # ItChat - 个人微信                 #
 ###################################
-CHAT_ItChat = 'ItChat'
-
 # [ItChat记住登录]
 """默认True"""
 ITCHAT_HOT_RELOAD = True
