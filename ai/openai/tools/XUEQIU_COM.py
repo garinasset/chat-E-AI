@@ -27,7 +27,7 @@ class ToolXueqiuCom(object):
                     },
                     "symbol": {
                         "type": "string",
-                        "description": "股票代码，上海市场前缀有SH，例如：SH600104；深圳市场前有缀SZ，例如：SZ300315；其他市场保持原样，例如美国市场苹果：AAPL，香港市场腾讯：00700。",
+                        "description": "股票代码，上海市场前缀有SH，例如：SH600104；深圳市场前有缀SZ，例如：SZ300315；香港市场代码为五位数字，没有前缀，不足五位前面补'0'，例如腾讯代码是‘00700’；其他市场保持原样，例如美国市场苹果：AAPL。",
                     },
                 },
                 "required": ["name", "symbol"],
