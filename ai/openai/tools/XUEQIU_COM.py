@@ -56,7 +56,7 @@ class ToolXueqiuCom(object):
                     name,
                     _xueQiu.symbol,
                     ("当前股价" + str(_xueQiu.current)) if _xueQiu.current else '当前股价未获得',
-                    '(交易中),' if _xueQiu.is_trade else '(未在交易),',
+                    '(交易中),' if _xueQiu.is_trade else '(不在交易状态),',
                     _percent,
                     ("成交金额" + str(_xueQiu.amount)+ '。') if _xueQiu.amount else '。',
                     ("目前总市值" + str(_xueQiu.market_capital) + ',') if _xueQiu.market_capital else '',
