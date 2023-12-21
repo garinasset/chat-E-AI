@@ -5,7 +5,7 @@ from models.response import ResponseBase
 
 """开发者规范"""
 """开发Tools工具详细步骤："""
-"""1、创建logger实例，用以日志记录。例如：logger = LogUtils.new_logger("toolTime")"""
+"""1、创建logger日志实例，用以记录潜在异常。参照：logger = LogUtils.new_logger("toolTime")"""
 """2、创建Tools工具类 例如class ToolTime(object):"""
 """3、创建一个名为"TOOL_MODEL"的字典，字典中可编辑的键值已在下方示例中注释列出，其他不可编辑。注意字典格式！"""
 """4、创建一个工具函数，返回值为ResponseBase模型。注意函数名和"TOOL_MODEL"字典中的name值保持一致，示例中为get_time，上下一致"""
