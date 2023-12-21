@@ -1,6 +1,7 @@
 from ai.openai.tools.TOOL_TIME import ToolTime
 from ai.openai.tools.WTTR_IN import ToolWttrIn
 from ai.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
+from ai.openai.tools.XUEQIU_COM import ToolXueqiuCom
 from config.settings import OPENAI_TOOLS_CONFIG
 from models.response import ResponseBase
 
@@ -37,4 +38,10 @@ class OpenAITools:
                 location = parameter_variables.get("location")
                 offset_hours = parameter_variables.get("offset_hours")
                 toolResponse = ToolTime.get_time(location=location, offset_hours=offset_hours)
+                return toolResponse
+            # 4.股票信息-处理
+            case ToolXueqiuCom.get_stock.__name__:
+                name = parameter_variables.get("name")
+                symbol = parameter_variables.get("symbol")
+                toolResponse = ToolXueqiuCom.get_stock(name=name, symbol=symbol)
                 return toolResponse

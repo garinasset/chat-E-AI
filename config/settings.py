@@ -8,6 +8,7 @@ from ai.openai.assets.models import MODEL_DICTS_OPENAI
 from ai.openai.tools.TOOL_TIME import ToolTime
 from ai.openai.tools.WWW_GARINASSET_COM import ToolWwwGarinassetCom
 from ai.openai.tools.WTTR_IN import ToolWttrIn
+from ai.openai.tools.XUEQIU_COM import ToolXueqiuCom
 
 # AI模块配置
 """Config Which You Want to Use."""
@@ -42,6 +43,7 @@ OPENAI_TOOLS_CONFIG = [
     {"enable": True, "Tool": ToolWwwGarinassetCom, "description": "嘉林数据-宏微观经济数据库"},
     {"enable": True, "Tool": ToolWttrIn, "description": "wttr.in-天气"},
     {"enable": True, "Tool": ToolTime, "description": "time-时间"},
+    {"enable": True, "Tool": ToolXueqiuCom, "description": "xueqiu.com-股票"},
 ]
 
 # chat模块配置
