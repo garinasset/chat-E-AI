@@ -135,6 +135,7 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
    - [x] tools-天气联网 - 基于wttr.in
    - [x] tools-宏微观经济数据库 - 基于嘉林数据 
    - [x] tools-时间 - 基于本地
+   - [x] tools-股票 - 基于xueqiu.com｜pysnowball
    - [ ] 图片生成
    - [ ] 语音翻译
    - [ ] 语音生成
