@@ -38,7 +38,7 @@ def handle_group_message(client, message: MessageItchat)->Send:
                     if _itcMsg.Content.startswith(_callCode):
                         """携带外部暗号"""
                         _ceaMsg.Action = True
-                        _ceaMsg.UserToSession = _ceaMsg.UserToReply
+                        _ceaMsg.UserToSession = _itcMsg.ActualNickName
                         _ceaMsg.Content = _itcMsg.Content.lstrip(_callCode)
                         _ceaMsg.NickName = _memberNickName
                         _ceaMsg.IsGroup = True
