@@ -120,11 +120,11 @@ class AIOpenAIChat:
                 raise
             except openai.APIConnectionError as e:
                 """记录日志"""
-                loggerOpenAI.error(e.message)
+                loggerOpenAI.warning(e.message)
                 self.responseAI.answer = e.message
             except openai.APIStatusError as e:
                 """记录日志"""
-                loggerOpenAI.error(e.message)
+                loggerOpenAI.warning(e.message)
                 self.responseAI.answer = e.message
             return
 
