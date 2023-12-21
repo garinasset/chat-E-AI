@@ -55,7 +55,7 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
   pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
 ### 第三步：编辑配置文件，以嵌入"OpenAI"为例：
-- **编辑config/setting.py，设置OpenAI API Key（最小配置）**
+- **编辑/config/settings.py，设置OpenAI API Key（最小配置）**
   ```python
   OPENAI_API_KEYS = ["你的Key"]
   ```
@@ -68,7 +68,7 @@ chat-E-AI 是一款创新的即时通讯机器人，具有嵌入人工智能（A
   ```
 - **在终端，使用微信扫描终端上的二维码，登录微信。**
 - **给文件传输助手发送信息，或让你的朋友给你发送以"AI"开头的任何问题，等待回复。**
-  > 注：默认回复"AI"开头的消息以及群聊@你的消息，你可以在setting.py中设置为其他字符串，或者回复所有信息。
+  > 注：默认回复"AI"开头的消息以及群聊@你的消息，你可以在/config/settings.py中设置为其他字符串，或者设置为空字符串“”以回复所有信息。
 ### 第五步：配置后台运行、开机启动。（可选）
 - **以使用systemctl系统管理程序的Linux系统ubuntu为例：**
   - 创建系统管理服务配置
