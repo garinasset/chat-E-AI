@@ -15,7 +15,7 @@ class ToolXueqiuCom(object):
             # 函数名称，必填
             "name": "get_stock",
             # 函数描述，必填
-            "description": "获取给定股票代码的股票信息，如果获取不到股票代码询问市场及代码",
+            "description": "获取给定股票代码的股票信息，如果获取不到股票代码询问市场及代码。",
             # 函数参数，必填。
             "parameters": {
                 "type": "object",
