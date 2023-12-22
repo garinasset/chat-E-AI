@@ -1,4 +1,4 @@
-from config.settings import ITCHAT_CALL_CODE_SELF, ITCHAT_CALL_CODE, ITCHAT_WHITELIST_GROUP
+from config.settings import ITCHAT_CALL_CODE_SELF, ITCHAT_CALL_CODE, ITCHAT_WHITELIST_GROUP, ITCHAT_BLACKLIST_GROUP
 from embed.reply.text import EReplyText
 from models.messages import MessageItchat, MessageCea
 from models.send import Send
@@ -7,6 +7,7 @@ def handle_group_message(client, message: MessageItchat)->Send:
     _callCodeSelf = ITCHAT_CALL_CODE_SELF
     _callCode = ITCHAT_CALL_CODE
     _whiteListGroup = ITCHAT_WHITELIST_GROUP
+    _blackListGroup = ITCHAT_BLACKLIST_GROUP
     _ceaMsg = MessageCea.model_construct()
     match message.Type:
         case "System":
@@ -33,7 +34,7 @@ def handle_group_message(client, message: MessageItchat)->Send:
                 """群友发出"""
                 _grpName = _itcMsg.User.NickName
                 _memberNickName = _itcMsg.ActualNickName
-                if not _whiteListGroup or _grpName in _whiteListGroup:
+                if (not _whiteListGroup or _grpName in _whiteListGroup) and _grpName not in _blackListGroup:
                     """群在白名单"""
                     if _itcMsg.Content.startswith(_callCode):
                         """携带外部暗号"""
