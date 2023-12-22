@@ -38,7 +38,8 @@ def handle_group_message(client, message: MessageItchat)->Send:
                     if _itcMsg.Content.startswith(_callCode):
                         """携带外部暗号"""
                         _ceaMsg.Action = True
-                        _ceaMsg.UserToSession = _itcMsg.ActualNickName
+                        # _ceaMsg.UserToSession = _itcMsg.ActualNickName
+                        _ceaMsg.UserToSession = _ceaMsg.UserToReply
                         _ceaMsg.Content = _itcMsg.Content.lstrip(_callCode)
                         _ceaMsg.NickName = _memberNickName
                         _ceaMsg.IsGroup = True
@@ -46,6 +47,7 @@ def handle_group_message(client, message: MessageItchat)->Send:
                         """没有暗号，但被@"""
                         _ceaMsg.Action = True
                         _ceaMsg.UserToSession = _itcMsg.ActualNickName
+                        # _ceaMsg.UserToSession = _ceaMsg.UserToReply
                         _ceaMsg.Content = _itcMsg.Content[_itcMsg.Content.find("\u2005") + 1:]
                         _ceaMsg.NickName = _memberNickName
                         _ceaMsg.IsGroup = True
