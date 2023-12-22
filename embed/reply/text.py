@@ -18,7 +18,20 @@ class EReplyText:
             # 会话实例user messages入列
             _sess.msgQueue.enqueue_user(message_content=_ceaMsg.Content)
             # AI实例messages更新。
-            _sess.ai.msgSys = _ceaMsg.Content[3:] if _ceaMsg.Content.startswith("###") else OPENAI_SYSTEM_CONTENT
+            if _sess.ai.msgSysChck:
+                if _ceaMsg.Content.startswith("###"):
+                    _sess.ai.msgSys = _ceaMsg.Content[3:]
+                    _sess.ai.msgSysChck = False
+            else:
+                if _ceaMsg.Content.startswith("$$$"):
+                    _sess.ai.msgSys = OPENAI_SYSTEM_CONTENT
+                    _sess.ai.msgSysChck = True
+                    client.logger.info("AI System Role：" +  OPENAI_SYSTEM_CONTENT)
+                elif _ceaMsg.Content.startswith("###"):
+                    _sess.ai.msgSys = _ceaMsg.Content[3:]
+                    client.logger.info("AI System Role：" + _sess.ai.msgSys)
+                else:
+                    client.logger.info("AI System Role：" + _sess.ai.msgSys)
             _sess.ai.msgUserAssi = _sess.msgQueue.queue
             """AI调用"""
             _sess.ai.response()

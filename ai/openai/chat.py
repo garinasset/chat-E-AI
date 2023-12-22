@@ -30,6 +30,7 @@ class AIOpenAIChat:
         )
         self.model = OPENAI_MODEL_DICTS["Name"]
         self.msgSys = OPENAI_SYSTEM_CONTENT
+        self.msgSysChck = True
         self.msgUserAssi = deque()
         self.messages = []
         self.tools = OpenAITools.get_tools()
