@@ -34,8 +34,8 @@ def handle_group_message(client, message: MessageItchat)->Send:
                 """群友发出"""
                 _grpName = _itcMsg.User.NickName
                 _memberNickName = _itcMsg.ActualNickName
-                if (not _whiteListGroup or _grpName in _whiteListGroup) and _grpName not in _blackListGroup:
-                    """群在白名单"""
+                if (not _whiteListGroup or _grpName in _whiteListGroup) and not any(keyword in _grpName for keyword in _blackListGroup):
+                    """群在白名单且不在黑名单"""
                     if _itcMsg.Content.startswith(_callCode):
                         """携带外部暗号"""
                         _ceaMsg.Action = True
