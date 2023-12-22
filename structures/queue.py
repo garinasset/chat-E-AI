@@ -36,6 +36,7 @@ class MessagesQueue:
     # 清空队列
     def clear(self):
         self.queue.clear()
+        return self.queue
 
     def is_empty(self):
         return len(self.queue) == 0
