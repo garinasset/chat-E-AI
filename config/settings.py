@@ -82,9 +82,9 @@ ITCHAT_WHITELIST_FRIEND = {}
 ITCHAT_WHITELIST_GROUP = {}
 
 # [ItChat群聊黑名单关键字匹配]
-"""｜""表示不设置；"AAA"表示对群名称包含关键字AAA群关闭，黑名单具有最高否决权"""
+"""[]表示不设置；["AAA"]表示对群名称包含关键字AAA群关闭，黑名单具有最高否决权"""
 """默认不设置"""
-ITCHAT_BLACKLIST_GROUP = ["HOW2搞量化", "瑞泽老姜折扣"]
+ITCHAT_BLACKLIST_GROUP = []
 
 
 # 系统配置
