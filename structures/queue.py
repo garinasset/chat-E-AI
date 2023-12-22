@@ -33,6 +33,9 @@ class MessagesQueue:
             return self.queue.popleft()
         else:
             return None
+    # 清空队列
+    def clear(self):
+        self.queue.clear()
 
     def is_empty(self):
         return len(self.queue) == 0

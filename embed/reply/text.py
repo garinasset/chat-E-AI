@@ -13,11 +13,11 @@ class EReplyText:
         if _action:
             # 记录日志
             client.logger.info(f'Message Signal RX: {_ceaMsg.UserToSession} {UtilsString.log_msg(_ceaMsg.Content)}')
-            """messages前置处理"""
+            """获取session"""
             _sess = client.get_session(sess_user_name=_ceaMsg.UserToSession)
-            # 会话实例user messages入列
+            """session 消息入列"""
             _sess.msgQueue.enqueue_user(message_content=_ceaMsg.Content)
-            # AI实例messages更新。
+            # AI sys messages更新。
             if _sess.ai.msgSysChck:
                 if _ceaMsg.Content.startswith("###"):
                     _sess.ai.msgSys = _ceaMsg.Content[3:]
@@ -27,11 +27,15 @@ class EReplyText:
                     _sess.ai.msgSys = OPENAI_SYSTEM_CONTENT
                     _sess.ai.msgSysChck = True
                     client.logger.info("AI System Role：" +  OPENAI_SYSTEM_CONTENT)
+                    _sess.msgQueue.clear()
+                    """session 消息重新入列"""
+                    _sess.msgQueue.enqueue_user(message_content=_ceaMsg.Content)
                 elif _ceaMsg.Content.startswith("###"):
                     _sess.ai.msgSys = _ceaMsg.Content[3:]
                     client.logger.info("AI System Role：" + _sess.ai.msgSys)
                 else:
                     client.logger.info("AI System Role：" + _sess.ai.msgSys)
+            # AI user messages更新。
             _sess.ai.msgUserAssi = _sess.msgQueue.queue
             """AI调用"""
             _sess.ai.response()
