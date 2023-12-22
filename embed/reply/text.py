@@ -1,3 +1,4 @@
+from config.settings import OPENAI_SYSTEM_CONTENT
 from embed.utils.suffix import EUtilsSuffix
 from models.messages import MessageCea
 from models.send import Send
@@ -17,6 +18,7 @@ class EReplyText:
             # 会话实例user messages入列
             _sess.msgQueue.enqueue_user(message_content=_ceaMsg.Content)
             # AI实例messages更新。
+            _sess.ai.msgSys = _ceaMsg.Content[3:] if _ceaMsg.Content.startswith("###") else OPENAI_SYSTEM_CONTENT
             _sess.ai.msgUserAssi = _sess.msgQueue.queue
             """AI调用"""
             _sess.ai.response()
