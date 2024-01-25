@@ -15,12 +15,12 @@ from ai.openai.tools.XUEQIU_COM import ToolXueqiuCom
 ###################################
 #  OpenAI - openai.com            #
 ###################################
-"""OpenAI API接口地址，空表示采用官方地址，配置以使用你的反向代理地址"""
+"""OpenAI API接口地址，空表示采用官方地址，配置后可以使用你的反向代理地址"""
 """默认空"""
 OPENAI_BASE_URL = ""
 # [OpenAI KEY]
 """OpenAI Key池。这是个数组，如果填入多个，例如["key1","key2"]，会轮询随机返回，简单负载均衡"""
-"""默认3"""
+"""默认空"""
 OPENAI_API_KEYS = [""]
 
 # [OpenAI Rate Limits]
