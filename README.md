@@ -34,7 +34,7 @@ chat-E-AI 是一款聊天机器人，具有嵌入人工智能（AI）的特点�
 ## 🛸 项目部署
 ### 第一步：克隆项目源代码
   ```shell
-  git clone https://github.com/garinops/chat-E-AI.git
+  git clone https://github.com/garinasset/chat-E-AI.git
   ```
   ```shell
   cd chat-E-AI
@@ -55,6 +55,7 @@ chat-E-AI 是一款聊天机器人，具有嵌入人工智能（AI）的特点�
   pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
 ### 第三步：编辑配置文件，以嵌入"OpenAI"为例：
+- **找到配置文件/config/settings-example.py，复制并命名为settings.py，保存在/config文件夹下**
 - **编辑/config/settings.py，设置OpenAI API Key（最小配置）**
   ```python
   OPENAI_API_KEYS = ["你的Key"]
