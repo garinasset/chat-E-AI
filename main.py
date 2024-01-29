@@ -7,7 +7,6 @@ def main():
     loggerSystem = LogUtils.new_logger("chat-E-AI")
     loggerSystem.info("⠋⠋⠋System Booting⠋⠋⠋")
 
-
     try:
         # Embedding Access
         if SYSTEM_ITCHAT:
