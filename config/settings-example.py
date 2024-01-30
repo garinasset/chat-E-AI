@@ -92,15 +92,15 @@ ITCHAT_BLACKLIST_GROUP = []
 ###################################
 # system - chat-E-AI               #
 ###################################
-# [启用OpenAI]
-"""True or False"""
-"""默认True"""
-SYSTEM_OPENAI = True
+# [AI]
+"""AI"""
+"""默认OpenAI"""
+SYSTEM_AI = 'OpenAI'
 
-# [启用ItChat]
-"""True or False"""
-"""默认True"""
-SYSTEM_ITCHAT = True
+# [chat]
+"""CHAT"""
+"""默认ITCHAT"""
+SYSTEM_CHAT = 'ITCHAT'
 
 # [上下文携带]
 """会话记录上下文对，0代表请求不携带历史会话记录。"""

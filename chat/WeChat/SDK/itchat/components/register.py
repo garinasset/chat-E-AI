@@ -1,4 +1,5 @@
 import logging, traceback, sys, threading
+import signal
 
 try:
     import Queue
@@ -10,6 +11,14 @@ from ..utils import test_connect
 from ..storage import templates
 
 logger = logging.getLogger('itchat')
+
+
+def sigterm_handler(signum, frame):
+    raise SystemExit("接收到 SIGTERM 信号")
+
+
+# 注册 SIGTERM 信号处理器
+signal.signal(signal.SIGTERM, sigterm_handler)
 
 
 def load_register(core):
@@ -43,7 +52,7 @@ def auto_login(self, hotReload=False, statusStorageDir='itchat.pkl',
 
 
 def configured_reply(self):
-    ''' determine the type of message and reply if its method is defined
+    ''' determine the type of message and reply_text if its method is defined
         however, I use a strange way to determine whether a msg is from massive platform
         I haven't found a better solution here
         The main problem I'm worrying about is the mismatching of new friends added on phone
@@ -106,6 +115,12 @@ def run(self, debug=False, blockThread=True):
                 self.dump_login_status()
             self.alive = False
             logger.debug('itchat received an ^C and exit.')
+            logger.info('Bye~')
+        except SystemExit:
+            if self.useHotReload:
+                self.dump_login_status()
+            self.alive = False
+            logger.debug('itchat received an SystemExit and exit.')
             logger.info('Bye~')
 
     if blockThread:

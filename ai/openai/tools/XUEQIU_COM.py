@@ -5,7 +5,8 @@ from common.log import LogUtils
 from models.response import ResponseBase
 from models.xueqiu import XueQiu
 
-logger = LogUtils.new_logger("toolXueqiuCom")
+logger = LogUtils.new_logger("OpenAI-toolXueqiuCom")
+
 
 class ToolXueqiuCom(object):
     TOOL_MODEL = {
@@ -48,7 +49,8 @@ class ToolXueqiuCom(object):
                 _xueQiu = XueQiu(**_quoteD)
                 _percent = ''
                 if _xueQiu.percent:
-                    _percent = ("下跌" + str(_xueQiu.percent) + '%,') if _xueQiu.percent <0 else ("上涨+" + str(_xueQiu.percent) + '%,')
+                    _percent = ("下跌" + str(_xueQiu.percent) + '%,') if _xueQiu.percent < 0 else (
+                                "上涨+" + str(_xueQiu.percent) + '%,')
                 else:
                     _percent = ''
 
@@ -58,10 +60,11 @@ class ToolXueqiuCom(object):
                     ("当前股价" + str(_xueQiu.current)) if _xueQiu.current else '当前股价未获得',
                     '(交易中),' if _xueQiu.is_trade else '(不在交易状态),',
                     _percent,
-                    ("成交金额" + str(_xueQiu.amount)+ '。') if _xueQiu.amount else '。',
+                    ("成交金额" + str(_xueQiu.amount) + '。') if _xueQiu.amount else '。',
                     ("目前总市值" + str(_xueQiu.market_capital) + ',') if _xueQiu.market_capital else '',
-                    ("流动市值"+ str(_xueQiu.float_market_capital) + '。') if _xueQiu.float_market_capital else '',
-                    ("该股票年初至今涨跌" + str(_xueQiu.current_year_percent) + '%。') if _xueQiu.current_year_percent else '',
+                    ("流动市值" + str(_xueQiu.float_market_capital) + '。') if _xueQiu.float_market_capital else '',
+                    ("该股票年初至今涨跌" + str(
+                        _xueQiu.current_year_percent) + '%。') if _xueQiu.current_year_percent else '',
                 )
             else:
                 raise ValueError

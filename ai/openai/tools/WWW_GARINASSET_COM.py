@@ -7,7 +7,7 @@ import requests
 from common.log import LogUtils
 from models.response import ResponseBase
 
-logger = LogUtils.new_logger("toolWwwGarinassetCom")
+logger = LogUtils.new_logger("OpenAI-toolWwwGarinassetCom")
 
 
 class ToolWwwGarinassetCom(object):

@@ -1,12 +1,12 @@
-from embed.utils.suffix import EUtilsSuffix
-from models.messages import MessageCea
+from embed.suffix import EUtilsSuffix
+from models.messages import MessageModelCea
 from models.send import Send
 from utils.string import UtilsString
 
 
-class EReplyText:
+class Reply:
     @staticmethod
-    def reply(client, message: MessageCea) -> Send:
+    def reply_text(client, message: MessageModelCea) -> Send:
         _ceaMsg = message
         _action = _ceaMsg.Action
         _send = Send.model_construct()
@@ -20,17 +20,17 @@ class EReplyText:
                 _ceaMsg.Content = _ceaMsg.Content[5:]
                 _sess.ai.cmdModel = True
                 _sess.ai.cmdString = '系统提示'
-                client.logger.info("CMD - AI System Role：" + UtilsString.get_omitted_text(_ceaMsg.Content))
+                client.logger.info("Switch AI Model to CMD Model.")
             elif _ceaMsg.Content.startswith("#账单查询"):
                 _ceaMsg.Content = _ceaMsg.Content[5:]
                 _sess.ai.cmdModel = True
                 _sess.ai.cmdString = '账单查询'
-                client.logger.info("CMD - Billing")
+                client.logger.info("Switch AI Model to CMD Model.")
             elif _ceaMsg.Content.startswith("#恢复出厂"):
                 _ceaMsg.Content = _ceaMsg.Content[5:]
                 _sess.ai.cmdModel = True
                 _sess.ai.cmdString = '恢复出厂'
-                client.logger.info("CMD - AI Factory Reset")
+                client.logger.info("Switch AI Model to CMD Model.")
             """user messages入列"""
             _sess.msgQueue.enqueue_user(message_content=_ceaMsg.Content)
             # AI user messages更新。

@@ -11,7 +11,7 @@ from models.response import ResponseBase
 # 必须实现一个TOOL_MODEL
 # 必须有一个和TOOL_MODEL中函数名称对应的静态方法实现
 
-loggerToolWttrIn = LogUtils.new_logger("toolWttrIn")
+loggerToolWttrIn = LogUtils.new_logger("OpenAI-toolWttrIn")
 
 
 class ToolWttrIn(object):

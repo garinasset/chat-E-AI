@@ -21,8 +21,7 @@ from utils.string import UtilsString
 load_dotenv()
 
 # 日志logger
-loggerOpenAI = LogUtils.new_logger("openai-Chat")
-loggerBackoff = LogUtils.new_logger("library-backoff")
+loggerOpenAI = LogUtils.new_logger("OpenAI")
 
 
 class AIOpenAIChat:
@@ -67,13 +66,12 @@ class AIOpenAIChat:
         )
         if not self.cmdModel:
             """捕获openai.RateLimitError，回退重试。"""
-
             @backoff.on_exception(backoff.expo,
                                   openai.RateLimitError,
                                   max_time=60,
                                   jitter=(60 / OPENAI_API_RATE_LIMITS) if OPENAI_API_RATE_LIMITS != 0 else 0,
                                   raise_on_giveup=False,
-                                  logger=loggerBackoff)
+                                  logger=loggerOpenAI)
             def inner_function():
                 try:
                     response_chat_completion = self.client.chat.completions.create(
@@ -133,10 +131,11 @@ class AIOpenAIChat:
 
             return inner_function()
         else:
+            loggerOpenAI.info(f"Call CMD {self.cmdString}")
             match self.cmdString:
                 case '系统提示':
                     _newMsgSys = str(self.msgUserAssi[-1]['content'])
-                    self.responseAI.answer = (f"超级命令#系统提示\n\n"
+                    self.responseAI.answer = (f"#系统提示 - 超级命令\n\n"
                                               f"① 系统提示词已由“{UtilsString.get_omitted_text(str(self.msgSys))}”变更为“{UtilsString.get_omitted_text(_newMsgSys)}”。\n"
                                               f"② 消息队列已清空。")
                     self.msgSys = _newMsgSys
@@ -160,7 +159,7 @@ class AIOpenAIChat:
                                 "%Y-%m-%d")
                             _expiresDate = datetime.datetime.fromtimestamp(_res.grants.data[0].expires_at).strftime(
                                 "%Y-%m-%d")
-                            self.responseAI.answer = str(f"超级命令#账单查询\n\n"
+                            self.responseAI.answer = str(f"#账单查询 - 超级命令\n\n"
                                                          f"{UtilsString.get_omitted_text(str(self.client.api_key))}\n"
                                                          f"① 全部额度：$ {_res.total_granted}\n"
                                                          f"② 使用额度：$ {_res.total_used}\n"
@@ -169,14 +168,14 @@ class AIOpenAIChat:
                                                          f"⑤ 剩余额度：$ {_res.total_available}"
                                                          )
                         else:
-                            self.responseAI.answer = str(f"超级命令#账单查询\n\n"
+                            self.responseAI.answer = str(f"#账单查询 - 超级命令\n\n"
                                                          f"{UtilsString.get_omitted_text(str(self.client.api_key))}\n\n"
                                                          f"*错误*\n"
                                                          f"账单查询发生错误，这很大可能是因为你的网络问题，如果你确定网络正常，可以向我们反馈，以增进产品改进。"
                                                          )
 
                     else:
-                        self.responseAI.answer = str(f"超级命令#账单查询\n\n"
+                        self.responseAI.answer = str(f"#账单查询 - 超级命令\n\n"
                                                      f"{UtilsString.get_omitted_text(str(self.client.api_key))}”\n\n"
                                                      f"*注意*\n"
                                                      f"你当前Key类型为API Key，但是账单查询仅支持Session Key，这里的支持有限是因为官方查询接口对API Key的支持不完备。"
@@ -184,7 +183,7 @@ class AIOpenAIChat:
                     self.msgUserAssi.pop()
 
                 case '恢复出厂':
-                    self.responseAI.answer = str(f"超级命令#恢复出厂\n\n"
+                    self.responseAI.answer = str(f"#恢复出厂 - 超级命令\n\n"
                                                  f"① 系统提示词恢复为“{UtilsString.get_omitted_text(str(OPENAI_SYSTEM_CONTENT))}”。\n"
                                                  f"② 消息队列已清空。")
                     self.msgSys = OPENAI_SYSTEM_CONTENT

@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from models.user import User
 
 
-class MessageItchat(BaseModel):
+class MessageModelItchat(BaseModel):
     FromUserName: str
     ToUserName: str
     Type: str
@@ -16,7 +16,7 @@ class MessageItchat(BaseModel):
     IsAt: Optional[bool] = False
 
 
-class MessageCea(BaseModel):
+class MessageModelCea(BaseModel):
     UserToReply: Optional[str] = None
     UserToSession: Optional[str] = None
     Content: Optional[str] = None

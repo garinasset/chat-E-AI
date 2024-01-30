@@ -318,7 +318,7 @@ class Core(object):
                 .. code:: python
 
                     @itchat.msg_register(itchat.content.CARD)
-                    def reply(msg):
+                    def reply_text(msg):
                         itchat.send_raw_msg(msg['MsgType'], msg['Content'], msg['FromUserName'])
 
             there are some little tricks here, you may discover them yourself
@@ -462,7 +462,7 @@ class Core(object):
         raise NotImplementedError()
 
     def configured_reply(self):
-        ''' determine the type of message and reply if its method is defined
+        ''' determine the type of message and reply_text if its method is defined
             however, I use a strange way to determine whether a msg is from massive platform
             I haven't found a better solution here
             The main problem I'm worrying about is the mismatching of new friends added on phone

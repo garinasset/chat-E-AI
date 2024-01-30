@@ -1,14 +1,14 @@
 from config.settings import ITCHAT_CALL_CODE_SELF, ITCHAT_CALL_CODE, ITCHAT_WHITELIST_FRIEND
-from embed.reply.text import EReplyText
-from models.messages import MessageItchat, MessageCea
+from embed.reply import Reply
+from models.messages import MessageModelItchat, MessageModelCea
 from models.send import Send
 
 
-def handle_friend_message(client, message: MessageItchat) -> Send:
+def handle_friend_message(client, message: MessageModelItchat) -> Send:
     _callCodeSelf = ITCHAT_CALL_CODE_SELF
     _callCode = ITCHAT_CALL_CODE
     _whiteListFriend = ITCHAT_WHITELIST_FRIEND
-    _ceaMsg = MessageCea.model_construct()
+    _ceaMsg = MessageModelCea.model_construct()
     match message.Type:
         case "System":
             pass
@@ -57,6 +57,6 @@ def handle_friend_message(client, message: MessageItchat) -> Send:
                     _ceaMsg.NickName = '朋友'
         case _:
             pass
-    _send = EReplyText.reply(client=client, message=_ceaMsg)
+    _send = Reply.reply_text(client=client, message=_ceaMsg)
     return _send
 
