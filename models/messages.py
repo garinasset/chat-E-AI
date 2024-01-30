@@ -15,6 +15,7 @@ class MessageItchat(BaseModel):
     ActualNickName: Optional[str] = None
     IsAt: Optional[bool] = False
 
+
 class MessageCea(BaseModel):
     UserToReply: Optional[str] = None
     UserToSession: Optional[str] = None

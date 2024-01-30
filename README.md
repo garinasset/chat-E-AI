@@ -130,8 +130,13 @@ chat-E-AI 是一款聊天机器人，具有嵌入人工智能（AI）的特点�
    - [x] OpenAI
    - [ ] 文心一言
    - [ ] 讯飞星火
+
+`3` 超级命令
+  - [x] ###系统提示
+  - [x] ###账单查询
+  - [x] ###恢复出厂
   
-`3` OpenAI
+`4` OpenAI
    - [x] 文本完成
    - [x] tools-天气联网 - 基于wttr.in
    - [x] tools-宏微观经济数据库 - 基于嘉林数据 
@@ -142,7 +147,6 @@ chat-E-AI 是一款聊天机器人，具有嵌入人工智能（AI）的特点�
    - [ ] 语音生成
    - [x] features - Keys池，随机策略，简单负载均衡
    - [x] features - Rate limits，自动回退
-   - [x] features - 提示工程，###系统提示，切换角色，$$$退出角色
 
 <a href="#readme">
     <img src="https://img.shields.io/badge/-返回顶部-7d09f1.svg" alt="#" align="right">

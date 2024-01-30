@@ -39,21 +39,21 @@ class ItchatClient:
             # self.logger.debug(msg)
             _itcMsg = MessageItchat(**msg)
             # self.logger.debug({"MessageItchat":_itcMsg})
-            _send = handle_friend_message(self,message=_itcMsg)
+            _send = handle_friend_message(self, message=_itcMsg)
             if _send.action:
-                itchat.send(msg=_send.content,toUserName=_send.user)
+                itchat.send(msg=_send.content, toUserName=_send.user)
             else:
                 pass
-
 
         @itchat.msg_register([TEXT], isGroupChat=True)
         def get_group_msg(msg):
             # self.logger.debug(msg)
             _itcMsg = MessageItchat(**msg)
             # self.logger.debug({"MessageItchat":_itcMsg})
-            _send = handle_group_message(self,message=_itcMsg)
+            _send = handle_group_message(self, message=_itcMsg)
             if _send.action:
-                itchat.send(msg=_send.content,toUserName=_send.user)
+                itchat.send(msg=_send.content, toUserName=_send.user)
             else:
                 pass
+
         itchat.run(debug=ITCHAT_DEBUG)
