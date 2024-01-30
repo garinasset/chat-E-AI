@@ -66,6 +66,7 @@ class AIOpenAIChat:
         )
         if not self.cmdModel:
             """捕获openai.RateLimitError，回退重试。"""
+
             @backoff.on_exception(backoff.expo,
                                   openai.RateLimitError,
                                   max_time=60,
@@ -136,8 +137,9 @@ class AIOpenAIChat:
                 case '系统提示':
                     _newMsgSys = str(self.msgUserAssi[-1]['content'])
                     self.responseAI.answer = (f"#系统提示 - 超级命令\n\n"
-                                              f"① 系统提示词已由“{UtilsString.get_omitted_text(str(self.msgSys))}”变更为“{UtilsString.get_omitted_text(_newMsgSys)}”。\n"
-                                              f"② 消息队列已清空。")
+                                              f"系统提示词（新）：\n***\n“{UtilsString.get_omitted_text(str(self.msgSys))}”\n***\n\n"
+                                              f"系统提示词（旧）：\n***\n“{UtilsString.get_omitted_text(_newMsgSys)}”\n***"
+                                              )
                     self.msgSys = _newMsgSys
                     self.msgUserAssi.clear()
 
@@ -184,10 +186,9 @@ class AIOpenAIChat:
 
                 case '恢复出厂':
                     self.responseAI.answer = str(f"#恢复出厂 - 超级命令\n\n"
-                                                 f"① 系统提示词恢复为“{UtilsString.get_omitted_text(str(OPENAI_SYSTEM_CONTENT))}”。\n"
-                                                 f"② 消息队列已清空。")
+                                                 f"① 系统提示已重置。\n"
+                                                 f"② 消息队列已清理。")
                     self.msgSys = OPENAI_SYSTEM_CONTENT
                     self.msgUserAssi.clear()
             self.cmdModel = False
             return
-
