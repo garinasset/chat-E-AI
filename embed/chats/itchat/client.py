@@ -17,7 +17,7 @@ class ClientItchat:
         # 获取登录用户
         self.userName = itchat.instance.storageClass.userName
         self.nickName = itchat.instance.storageClass.nickName
-        self.logger.info(f'WeChat Login Successfully as {self.nickName}({self.userName}).')
+        self.logger.info(f'WeChat Embed Successfully, SDK is ITCHAT, Current User {self.nickName}({self.userName}).')
         # 会话实例字典
         self.sessionDicts = {}
 
