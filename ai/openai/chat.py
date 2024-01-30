@@ -137,8 +137,8 @@ class AIOpenAIChat:
                 case '系统提示':
                     _newMsgSys = str(self.msgUserAssi[-1]['content'])
                     self.responseAI.answer = (f"#系统提示 - 超级命令\n\n"
-                                              f"系统提示词（新）：\n***\n“{UtilsString.get_omitted_text(str(self.msgSys))}”\n***\n\n"
-                                              f"系统提示词（旧）：\n***\n“{UtilsString.get_omitted_text(_newMsgSys)}”\n***"
+                                              f"系统提示词（新）：\n***\n“{UtilsString.get_omitted_text(_newMsgSys)}”\n***\n\n"
+                                              f"系统提示词（旧）：\n***\n“{UtilsString.get_omitted_text(str(self.msgSys))}”\n***"
                                               )
                     self.msgSys = _newMsgSys
                     self.msgUserAssi.clear()
