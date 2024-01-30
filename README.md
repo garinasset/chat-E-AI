@@ -132,9 +132,9 @@ chat-E-AI 是一款聊天机器人，具有嵌入人工智能（AI）的特点�
    - [ ] 讯飞星火
 
 `3` 超级命令
-  - [x] ###系统提示
-  - [x] ###账单查询
-  - [x] ###恢复出厂
+  - [x] #系统提示
+  - [x] #账单查询
+  - [x] #恢复出厂
   
 `4` OpenAI
    - [x] 文本完成
@@ -180,10 +180,6 @@ chat-E-AI 是一款聊天机器人，具有嵌入人工智能（AI）的特点�
 <a href="#readme">
     <img src="https://img.shields.io/badge/-返回顶部-7d09f1.svg" alt="#" align="right">
 </a>
-
-## 💪 类似项目
-
-- [chatgpt-on-wechat](https://github.com/zhayujie/chatgpt-on-wechat)
 
 
 <a href="#readme">
