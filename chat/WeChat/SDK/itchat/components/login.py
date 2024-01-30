@@ -7,6 +7,7 @@ import json
 import random
 import traceback
 import logging
+
 try:
     from httplib import BadStatusLine
 except ImportError:
@@ -319,7 +320,7 @@ def start_receiving(self, exitCallback=None, getReceivingFnOnly=False):
                 pass
             except:
                 retryCount += 1
-                logger.error(traceback.format_exc())
+                logger.error('Connection error,reconnecting.')
                 if self.receivingRetryCount < retryCount:
                     logger.error("Having tried %s times, but still failed. " % (
                         retryCount) + "Stop trying...")
@@ -331,6 +332,7 @@ def start_receiving(self, exitCallback=None, getReceivingFnOnly=False):
             exitCallback()
         else:
             logger.info('LOG OUT!')
+
     if getReceivingFnOnly:
         return maintain_loop
     else:
@@ -386,15 +388,20 @@ def get_msg(self):
     headers = {
         'ContentType': 'application/json; charset=UTF-8',
         'User-Agent': config.USER_AGENT}
-    r = self.s.post(url, data=json.dumps(data),
-                    headers=headers, timeout=config.TIMEOUT)
-    dic = json.loads(r.content.decode('utf-8', 'replace'))
-    if dic['BaseResponse']['Ret'] != 0:
+    try:
+        r = self.s.post(url, data=json.dumps(data), headers=headers, timeout=config.TIMEOUT)
+        dic = json.loads(r.content.decode('utf-8', 'replace'))
+        if dic['BaseResponse']['Ret'] != 0:
+            return None, None
+        self.loginInfo['SyncKey'] = dic['SyncKey']
+        self.loginInfo['synckey'] = '|'.join(['%s_%s' % (item['Key'], item['Val'])
+                                              for item in dic['SyncCheckKey']['List']])
+        return dic['AddMsgList'], dic['ModContactList']
+    except requests.exceptions.ConnectionError as e:
+        # 处理连接错误
+        logger.error('Connection error,reconnecting.')
+        # 返回适当的响应或执行其他操作
         return None, None
-    self.loginInfo['SyncKey'] = dic['SyncKey']
-    self.loginInfo['synckey'] = '|'.join(['%s_%s' % (item['Key'], item['Val'])
-                                          for item in dic['SyncCheckKey']['List']])
-    return dic['AddMsgList'], dic['ModContactList']
 
 
 def logout(self):
