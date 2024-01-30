@@ -13,7 +13,7 @@ class ClientItchat:
     def __init__(self):
         self.client = itchat
         self.client.auto_login(hotReload=ITCHAT_HOT_RELOAD, enableCmdQR=ITCHAT_ENABLECMDQR)
-        self.logger = LogUtils.new_logger("WeChat")
+        self.logger = LogUtils.new_logger("chat-WeChat(ITCHAT)")
         # 获取登录用户
         self.userName = itchat.instance.storageClass.userName
         self.nickName = itchat.instance.storageClass.nickName

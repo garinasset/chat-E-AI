@@ -21,7 +21,7 @@ from utils.string import UtilsString
 load_dotenv()
 
 # 日志logger
-loggerOpenAI = LogUtils.new_logger("OpenAI")
+loggerOpenAI = LogUtils.new_logger("AI-OpenAI")
 
 
 class AIOpenAIChat:

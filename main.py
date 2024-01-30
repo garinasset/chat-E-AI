@@ -4,7 +4,7 @@ from embed.chats.itchat.client import ClientItchat
 from common.log import LogUtils
 from config.settings import SYSTEM_CHAT, SYSTEM_AI
 
-loggerSystem = LogUtils.new_logger("SYSTEM")
+loggerSystem = LogUtils.new_logger("chat-E-AI")
 
 
 def sigterm_handler(signum, frame):
